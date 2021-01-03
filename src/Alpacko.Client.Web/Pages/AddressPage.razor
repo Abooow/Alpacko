@@ -25,7 +25,7 @@
     <p>* indicates a required field</p>
     <div class="row">
         <div class="d-inline-flex p-2 col-md-4">
-            <EditForm Model="@sender_Model" style="border:1px solid black">
+            <EditForm Model="@senderModel" style="border:1px solid black">
                 <DataAnnotationsValidator />
                 <div id="form_group_left" class="form-group">
                     <label for="email">LEFT:</label>
@@ -34,46 +34,46 @@
                     <div class="d-inline-flex">
                         <div id="firstname_box " class="p-2">
                             <label for="firstname">FirstName</label>
-                            <InputText type="firstname" class="form-control" id="firstname" @bind-Value="@sender_Model.FirstName" placeholder="First Name" />
-                            <ValidationMessage For="@(() => sender_Model.FirstName)" />
+                            <InputText type="firstname" class="form-control" id="firstname" @bind-Value="@senderModel.FirstName" placeholder="First Name" />
+                            <ValidationMessage For="@(() => senderModel.FirstName)" />
                         </div>
                         <div id="lastname_box" class="p-2">
                             <label for="lastname">LastName</label>
-                            <InputText type="lastname" class="form-control" id="lastname" @bind-Value="@sender_Model.LastName" placeholder="Last Name" />
-                            <ValidationMessage For="@(() => sender_Model.LastName)" />
+                            <InputText type="lastname" class="form-control" id="lastname" @bind-Value="@senderModel.LastName" placeholder="Last Name" />
+                            <ValidationMessage For="@(() => senderModel.LastName)" />
                         </div>
                     </div>
                     <div class="d-inline-flex p-2">
                         <div id="address_box">
                             <label for="address">Address</label>
-                            <InputText type="address" class="form-control" id="address" @bind-Value="@sender_Model.Address" placeholder="Address" />
-                            <ValidationMessage For="@(() => sender_Model.Address)" />
+                            <InputText type="address" class="form-control" id="address" @bind-Value="@senderModel.Address" placeholder="Address" />
+                            <ValidationMessage For="@(() => senderModel.Address)" />
                         </div>
                     </div>
-                    <div class="d-inline-flex p-2">
+                    <div class="d-inline-flex ">
                         <div id="zipcode_box " class="p-2">
                             <label for="zipcode">Zip Code</label>
-                            <InputNumber class="form-control" id="zipcode" @bind-Value="@sender_Model.ZipCode" placeholder="Zip Code" />
-                            <ValidationMessage For="@(() => sender_Model.ZipCode)" />
+                            <InputText class="form-control" id="zipcode" @bind-Value="@senderModel.ZipCode" placeholder="Zip Code" />
+                            <ValidationMessage For="@(() => senderModel.ZipCode)" />
                         </div>
                         <div id="city_box" class="p-2">
                             <label for="city">City</label>
-                            <InputText type="city" class="form-control" id="city" @bind-Value="@sender_Model.City" placeholder="City" />
-                            <ValidationMessage For="@(() => sender_Model.City)" />
+                            <InputText type="city" class="form-control" id="city" @bind-Value="@senderModel.City" placeholder="City" />
+                            <ValidationMessage For="@(() => senderModel.City)" />
                         </div>
                     </div>
                     <div class="d-inline-flex p-2">
                         <div id="email_box">
                             <label for="email">Email</label>
-                            <InputText type="Email" class="form-control" id="Email" @bind-Value="@sender_Model.Email" placeholder="Email" />
-                            <ValidationMessage For="@(() => sender_Model.Email)" />
+                            <InputText type="Email" class="form-control" id="Email" @bind-Value="@senderModel.Email" placeholder="Email" />
+                            <ValidationMessage For="@(() => senderModel.Email)" />
                         </div>
                     </div>
                 </div>
             </EditForm>
         </div>
         <div class="d-inline-flex p-2 col-md-4">
-            <EditForm Model="@sender_Model" style="border:1px solid black">
+            <EditForm Model="@receiverModel" style="border:1px solid black">
                 <DataAnnotationsValidator />
                 <div id="form_group_mid" class="form-group">
                     <label for="email">MID:</label>
@@ -82,85 +82,81 @@
                     <div class="d-inline-flex">
                         <div id="firstname_box " class="p-2">
                             <label for="firstname">FirstName</label>
-                            <InputText type="firstname" class="form-control" id="firstname" @bind-Value="@receiver_Model.FirstName" placeholder="First Name" />
-                            <ValidationMessage For="@(() => receiver_Model.FirstName)" />
+                            <InputText type="firstname" class="form-control" id="firstname" @bind-Value="@receiverModel.FirstName" placeholder="First Name" />
+                            <ValidationMessage For="@(() => receiverModel.FirstName)" />
                         </div>
                         <div id="lastname_box" class="p-2">
                             <label for="lastname">LastName</label>
-                            <InputText type="lastname" class="form-control" id="lastname" @bind-Value="@receiver_Model.LastName" placeholder="Last Name" />
-                            <ValidationMessage For="@(() =>  receiver_Model.LastName)" />
+                            <InputText type="lastname" class="form-control" id="lastname" @bind-Value="@receiverModel.LastName" placeholder="Last Name" />
+                            <ValidationMessage For="@(() =>  receiverModel.LastName)" />
                         </div>
                     </div>
                     <div>
                         <div id="Co_box" class="p-2">
                             <label for="C/o">C/o</label>
-                            <InputText type="C/o" class="form-control" id="C/o" @bind-Value="@receiver_Model.Co" placeholder="C/o" />
-                            <ValidationMessage For="@(() =>  receiver_Model.Co)" />
+                            <InputText type="C/o" class="form-control" id="C/o" @bind-Value="@receiverModel.Co" placeholder="C/o" />
+                            <ValidationMessage For="@(() =>  receiverModel.Co)" />
                         </div>
                     </div>
                     <div>
                         <div id="address_box" class="p-2">
                             <label for="address">Address</label>
-                            <InputText type="address" class="form-control" id="address" @bind-Value="@receiver_Model.Address" placeholder="Address" />
-                            <ValidationMessage For="@(() =>  receiver_Model.Address)" />
+                            <InputText type="address" class="form-control" id="address" @bind-Value="@receiverModel.Address" placeholder="Address" />
+                            <ValidationMessage For="@(() =>  receiverModel.Address)" />
                         </div>
                     </div>
                     <div class="d-inline-flex ">
                         <div id="zipcode_box " class="p-2">
                             <label for="zipcode">Zip Code</label>
-                            <InputNumber class="form-control" id="zipcode" @bind-Value="@receiver_Model.ZipCode" placeholder="Zip Code" />
-                            <ValidationMessage For="@(() =>  receiver_Model.ZipCode)" />
+                            <InputText class="form-control" id="zipcode" @bind-Value="@receiverModel.ZipCode" placeholder="Zip Code" />
+                            <ValidationMessage For="@(() =>  receiverModel.ZipCode)" />
                         </div>
                         <div id="city_box" class="p-2">
                             <label for="city">City</label>
-                            <InputText type="city" class="form-control" id="city" @bind-Value="@receiver_Model.City" placeholder="City" />
-                            <ValidationMessage For="@(() =>  receiver_Model.City)" />
+                            <InputText type="city" class="form-control" id="city" @bind-Value="@receiverModel.City" placeholder="City" />
+                            <ValidationMessage For="@(() =>  receiverModel.City)" />
                         </div>
                     </div>
                     <div>
                         <div id="country_box" class="p-2">
                             <label for="country">Country</label>
-                            <InputText type="country" class="form-control" id="country" @bind-Value="@receiver_Model.Country" placeholder="Country" />
-                            <ValidationMessage For="@(() =>  receiver_Model.Country)" />
+                            <InputText type="country" class="form-control" id="country" @bind-Value="@receiverModel.Country" placeholder="Country" />
+                            <ValidationMessage For="@(() =>  receiverModel.Country)" />
                         </div>
                     </div>
                     <div>
                         <div id="email_box" class="p-2">
                             <label for="email">Email</label>
-                            <InputText type="Email" class="form-control" id="Email" @bind-Value="@receiver_Model.Email" placeholder="Email" />
-                            <ValidationMessage For="@(() => receiver_Model.Email)" />
+                            <InputText type="Email" class="form-control" id="Email" @bind-Value="@receiverModel.Email" placeholder="Email" />
+                            <ValidationMessage For="@(() => receiverModel.Email)" />
                         </div>
                     </div>
                     <div>
                         <div id="phonenumber_box" class="p-2">
                             <label for="phonenumber">Phone number</label>
-                            <InputNumber type="PhoneNumber" class="form-control" id="PhoneNumber" @bind-Value="@receiver_Model.PhoneNumber" placeholder="Phone Number" />
-                            <ValidationMessage For="@(() =>  receiver_Model.PhoneNumber)" />
+                            <InputText type="tel" class="form-control" id="PhoneNumber" @bind-Value="@receiverModel.PhoneNumber" placeholder="Phone Number" />
+                            <ValidationMessage For="@(() =>  receiverModel.PhoneNumber)" />
                         </div>
                     </div>
                 </div>
             </EditForm>
         </div>
-        <div class="d-inline-flex p-2 col-md-4">
-            <form style="border:1px solid black">
-                <div class="form-group" style="background-color:lightskyblue;">
-                    <label for="email">RIGHT Email:</label>
-                    <input type="email" class="form-control" id="email" placeholder="Enter email">
-                </div>
-                <div class="form-group">
-                    <label for="pwd">Password:</label>
-                    <input type="password" class="form-control" id="pwd" placeholder="Enter password">
-                </div>
-                <div class="checkbox">
-                    <label><input type="checkbox"> Remember me</label>
-                </div>
-                <button type="submit" class="btn btn-default">Submit</button>
-            </form>
+        <div class="p-2 border rounded border-3">
+            <div id="package_info_box">
+                <h3 class="p-2">Package Information</h3>
+            </div>
+            <div class="p-2">
+                <p>Size:</p>
+                <p>Length:</p>
+                <p>Width:</p>
+                <p>Height:</p>
+                <p>Weight:</p>
+            </div>
         </div>
     </div>
 </div>
 
 @code {
-    private Sender_Model sender_Model = new Sender_Model();
-    private Receiver_Model receiver_Model = new Receiver_Model();
+    private SenderModel senderModel = new SenderModel();
+    private ReceiverModel receiverModel = new ReceiverModel();
 }

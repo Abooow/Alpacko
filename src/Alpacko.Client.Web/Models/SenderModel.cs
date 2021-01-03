@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Alpacko.Client.Web.Models
 {
-    public class Sender_Model
+    public class SenderModel
     {
         [Required(ErrorMessage = "First name is required")]
         [MaxLength(26, ErrorMessage = "First name is too long")]
@@ -22,7 +22,8 @@ namespace Alpacko.Client.Web.Models
 
         [Required(ErrorMessage = "Zip Code is required")]
         [MaxLength(9, ErrorMessage = "Zip Code is too long")]
-        public int ZipCode { get; set; }
+        [RegularExpression(@"\d{3}[ |-]*\d{2}", ErrorMessage = "Not a valid zip code")]
+        public string ZipCode { get; set; }
 
         [Required(ErrorMessage = "City is required")]
         [MaxLength(30, ErrorMessage = "City is too long")]

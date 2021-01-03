@@ -43,3 +43,13 @@
 #address_box {
     width: 350px;
 }
+
+.border-3 {
+    border-width: 3px;
+    background-color: red;
+}
+/*
+#package_info_box {
+    border-bottom-style: solid;
+    border-bottom-color: darkgray;
+}*/
