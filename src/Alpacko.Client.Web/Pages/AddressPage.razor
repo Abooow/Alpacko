@@ -1,8 +1,8 @@
 ﻿@page "/address"
 @using Alpacko.Client.Web.Models;
 
-<h3>AddressPage</h3>
-<div class="container">
+<h3>AddressPageNAVBAR</h3>
+<div class="container-fluid">
     <ul class="nav nav-pills justify-content-center">
         <li class="nav-item ">
             <div class="nav-link">Product</div>
@@ -21,50 +21,49 @@
         </li>
     </ul>
 </div>
-<div class="container">
-    <p>* indicates a required field</p>
+<div class="container-fluid">
+    <p id="indication">* indicates a required field</p>
     <div class="row">
-        <div class="d-inline-flex p-2 col-md-4">
-            <EditForm Model="@senderModel" style="border:1px solid black">
+        <div class="p-2 col">
+            <EditForm Model="@senderModel">
                 <DataAnnotationsValidator />
                 <div id="form_group_left" class="form-group">
-                    <label for="email">LEFT:</label>
-                    <h1 class="p-2">Sender</h1>
-                    <p class="p-2">Who is sending the package?</p>
+                    <h1 id="main_Sender">Sender</h1>
+                    <p id="sender">Who is sending the package?</p>
                     <div class="d-inline-flex">
                         <div id="firstname_box " class="p-2">
-                            <label for="firstname">FirstName</label>
+                            <label for="firstname">First name *</label>
                             <InputText type="firstname" class="form-control" id="firstname" @bind-Value="@senderModel.FirstName" placeholder="First Name" />
                             <ValidationMessage For="@(() => senderModel.FirstName)" />
                         </div>
                         <div id="lastname_box" class="p-2">
-                            <label for="lastname">LastName</label>
+                            <label for="lastname">Last name *</label>
                             <InputText type="lastname" class="form-control" id="lastname" @bind-Value="@senderModel.LastName" placeholder="Last Name" />
                             <ValidationMessage For="@(() => senderModel.LastName)" />
                         </div>
                     </div>
                     <div class="d-inline-flex p-2">
                         <div id="address_box">
-                            <label for="address">Address</label>
+                            <label for="address">Address *</label>
                             <InputText type="address" class="form-control" id="address" @bind-Value="@senderModel.Address" placeholder="Address" />
                             <ValidationMessage For="@(() => senderModel.Address)" />
                         </div>
                     </div>
                     <div class="d-inline-flex ">
                         <div id="zipcode_box " class="p-2">
-                            <label for="zipcode">Zip Code</label>
+                            <label for="zipcode">Zip Code *</label>
                             <InputText class="form-control" id="zipcode" @bind-Value="@senderModel.ZipCode" placeholder="Zip Code" />
                             <ValidationMessage For="@(() => senderModel.ZipCode)" />
                         </div>
                         <div id="city_box" class="p-2">
-                            <label for="city">City</label>
+                            <label for="city">City *</label>
                             <InputText type="city" class="form-control" id="city" @bind-Value="@senderModel.City" placeholder="City" />
                             <ValidationMessage For="@(() => senderModel.City)" />
                         </div>
                     </div>
                     <div class="d-inline-flex p-2">
                         <div id="email_box">
-                            <label for="email">Email</label>
+                            <label for="email">Email *</label>
                             <InputText type="Email" class="form-control" id="Email" @bind-Value="@senderModel.Email" placeholder="Email" />
                             <ValidationMessage For="@(() => senderModel.Email)" />
                         </div>
@@ -72,21 +71,20 @@
                 </div>
             </EditForm>
         </div>
-        <div class="d-inline-flex p-2 col-md-4">
-            <EditForm Model="@receiverModel" style="border:1px solid black">
+        <div id="mid_main_box" class=" p-2 col">
+            <EditForm Model="@receiverModel">
                 <DataAnnotationsValidator />
                 <div id="form_group_mid" class="form-group">
-                    <label for="email">MID:</label>
-                    <h1 class="p-2">Receiver</h1>
-                    <p class="p-2">Where's the package going?</p>
+                    <h1 id="main_Receiver">Receiver</h1>
+                    <p id="receiver">Where's the package going?</p>
                     <div class="d-inline-flex">
                         <div id="firstname_box " class="p-2">
-                            <label for="firstname">FirstName</label>
+                            <label for="firstname">First name *</label>
                             <InputText type="firstname" class="form-control" id="firstname" @bind-Value="@receiverModel.FirstName" placeholder="First Name" />
                             <ValidationMessage For="@(() => receiverModel.FirstName)" />
                         </div>
                         <div id="lastname_box" class="p-2">
-                            <label for="lastname">LastName</label>
+                            <label for="lastname">Last name *</label>
                             <InputText type="lastname" class="form-control" id="lastname" @bind-Value="@receiverModel.LastName" placeholder="Last Name" />
                             <ValidationMessage For="@(() =>  receiverModel.LastName)" />
                         </div>
@@ -100,19 +98,19 @@
                     </div>
                     <div>
                         <div id="address_box" class="p-2">
-                            <label for="address">Address</label>
+                            <label for="address">Address *</label>
                             <InputText type="address" class="form-control" id="address" @bind-Value="@receiverModel.Address" placeholder="Address" />
                             <ValidationMessage For="@(() =>  receiverModel.Address)" />
                         </div>
                     </div>
                     <div class="d-inline-flex ">
                         <div id="zipcode_box " class="p-2">
-                            <label for="zipcode">Zip Code</label>
+                            <label for="zipcode">Zip Code *</label>
                             <InputText class="form-control" id="zipcode" @bind-Value="@receiverModel.ZipCode" placeholder="Zip Code" />
                             <ValidationMessage For="@(() =>  receiverModel.ZipCode)" />
                         </div>
                         <div id="city_box" class="p-2">
-                            <label for="city">City</label>
+                            <label for="city">City *</label>
                             <InputText type="city" class="form-control" id="city" @bind-Value="@receiverModel.City" placeholder="City" />
                             <ValidationMessage For="@(() =>  receiverModel.City)" />
                         </div>
@@ -141,16 +139,24 @@
                 </div>
             </EditForm>
         </div>
-        <div class="p-2 border rounded border-3">
-            <div id="package_info_box">
-                <h3 class="p-2">Package Information</h3>
+        <div class="col">
+            <div id="form_group_right">
+                <div id="package_info_box">
+                    <h3 id="package_info_header">Package Information</h3>
+                </div>
+                <div id="package_data" >
+                    <p>Size:</p>
+                    <p>Length:</p>
+                    <p>Width:</p>
+                    <p>Height:</p>
+                    <p>Weight:</p>
+                </div>
+                <div class="p-2">
+                    <p>Price incl. VAT</p>
+                </div>
             </div>
-            <div class="p-2">
-                <p>Size:</p>
-                <p>Length:</p>
-                <p>Width:</p>
-                <p>Height:</p>
-                <p>Weight:</p>
+            <div id="btn_box">
+                <button id="nextBtn" class="rounded">NEXT</button>
             </div>
         </div>
     </div>

@@ -28,28 +28,94 @@
     padding: 0;
 }
 
-.container {
-    width: 2000px;
-}
-
 #form_group_left {
-    background: yellow;
+    width: 400px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #95999C;
+    border-radius: 10px;
+    margin-left: 150px;
 }
 
 #form_group_mid {
-    background: pink;
+    width: 400px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #95999C;
+    border-radius: 10px;
+    margin-left: 50px;
+}
+
+#form_group_right {
+    width: 290px;
+    margin-top: 200px;
+    margin-left: 50px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #95999C;
+    border-radius: 10px;
+}
+
+#indication {
+    margin-left: 150px;
+    margin-bottom: 0;
+    font-size: 12px;
+    font-style: italic;
+}
+
+#main_Sender {
+    margin-bottom: 0;
+    margin-left: 10px;
+}
+
+#sender {
+    margin-left: 10px;
+    margin-bottom: 2px;
+    font-size: 12px;
+    font-family: 'Helvetica Neue';
+}
+
+#main_Receiver {
+    margin-bottom: 0;
+    margin-left: 10px;
+}
+
+#receiver {
+    margin-left: 10px;
+    margin-bottom: 2px;
+    font-size: 12px;
+    font-family: 'Helvetica Neue';
 }
 
 #address_box {
     width: 350px;
 }
 
-.border-3 {
-    border-width: 3px;
-    background-color: red;
+#package_info_header {
+    padding:5px;
+    padding-left:10px;
+    border-bottom: solid;
+    border-bottom-width: 1px;
+    border-color: #95999C;
 }
-/*
-#package_info_box {
-    border-bottom-style: solid;
-    border-bottom-color: darkgray;
-}*/
+#package_data {
+    font-family: 'Segoe UI';
+    font-weight: bold;
+    color: #66686A;
+    padding-left:50px;
+}
+
+#btn_box {
+    margin-top: 50px;
+}
+
+#nextBtn {
+    margin-left: 130px;
+    width: 130px;
+    height: 50px;
+    background: #28A5CD;
+    color: white;
+    font-family: 'Segoe UI';
+    font-size: 20px;
+    border: hidden;
+}
