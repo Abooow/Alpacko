@@ -7,7 +7,7 @@ namespace Alpacko.Client.Web.Models
 {
     public class PackageInfoModel
     {
-        public int Size { get; set; }
+        public string Size { get; set; }
         public int Length { get; set; }
         public int Width { get; set; }
         public int Height { get; set; }

@@ -28,25 +28,32 @@
     padding: 0;
 }
 
-#form_group_left {
+.validation-message {
+    color: #dc3545;
+    font-size: 80%;
+}
+
+#form-group-left {
     width: 400px;
     border-width: 1px;
     border-style: solid;
     border-color: #95999C;
     border-radius: 10px;
     margin-left: 150px;
+    box-shadow: 10px 10px 8px rgba(0, 0, 0, 0.04);
 }
 
-#form_group_mid {
+#form-group-mid {
     width: 400px;
     border-width: 1px;
     border-style: solid;
     border-color: #95999C;
     border-radius: 10px;
     margin-left: 50px;
+    box-shadow: 10px 10px 8px rgba(0, 0, 0, 0.04);
 }
 
-#form_group_right {
+#form-group-right {
     width: 290px;
     margin-top: 200px;
     margin-left: 50px;
@@ -54,6 +61,7 @@
     border-style: solid;
     border-color: #95999C;
     border-radius: 10px;
+    box-shadow: 10px 10px 8px rgba(0, 0, 0, 0.04);
 }
 
 #indication {
@@ -61,51 +69,60 @@
     margin-bottom: 0;
     font-size: 12px;
     font-style: italic;
+    color: #95999C;
 }
 
-#main_Sender {
+#main-box-header {
     margin-bottom: 0;
     margin-left: 10px;
 }
 
-#sender {
+#sub-text-main-box-header {
     margin-left: 10px;
     margin-bottom: 2px;
     font-size: 12px;
-    font-family: 'Helvetica Neue';
+    font-family: 'Segoe UI';
+    color: #95999C;
 }
 
-#main_Receiver {
-    margin-bottom: 0;
-    margin-left: 10px;
+#address-box {
+    width: 380px;
 }
 
-#receiver {
-    margin-left: 10px;
-    margin-bottom: 2px;
-    font-size: 12px;
-    font-family: 'Helvetica Neue';
-}
-
-#address_box {
-    width: 350px;
-}
-
-#package_info_header {
-    padding:5px;
-    padding-left:10px;
+#package-info-header {
+    padding: 5px;
+    padding-left: 10px;
     border-bottom: solid;
     border-bottom-width: 1px;
     border-color: #95999C;
 }
-#package_data {
+
+#package-data {
     font-family: 'Segoe UI';
     font-weight: bold;
-    color: #66686A;
-    padding-left:50px;
+    color: #95999C;
+    padding-left: 40px;
+    width: 240px;
 }
 
-#btn_box {
+#info-title {
+    color: #95999C;
+}
+
+#vat-styling {
+    color: #95999C; 
+    font-size: 10px; 
+    padding-top: 11px;
+    padding-left: 0;
+}
+
+#sek-styling {
+    color: #076DD4;
+    text-align: right; 
+    padding-left: 65px;
+}
+
+#btn-box {
     margin-top: 50px;
 }
 
@@ -118,4 +135,5 @@
     font-family: 'Segoe UI';
     font-size: 20px;
     border: hidden;
+    box-shadow: 10px 10px 8px rgba(0, 0, 0, 0.04);
 }
