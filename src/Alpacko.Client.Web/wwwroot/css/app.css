@@ -18,3 +18,30 @@
 		right: 0.75rem;
 		top: 0.5rem;
 	}
+
+.bg-blue {
+	background-color: #28A5CD !important;
+}
+
+.text-25 {
+	font-size: 1.2rem;
+}
+
+.text-orange-hover:hover {
+	color: #FF9932 !important;
+}
+
+.btn-outline-orange {
+	border: #FF9932 1px solid !important;
+	border-radius: 4px !important;
+	color: white !important;
+	background-color: none !important;
+}
+
+	.btn-outline-orange:hover {
+		background-color: #FF9932 !important;
+	}
+
+.border-3 {
+	border-width: 3px !important;
+}
