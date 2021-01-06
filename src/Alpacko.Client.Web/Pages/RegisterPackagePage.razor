@@ -1,0 +1,213 @@
+﻿
+
+@page "/RegisterPackage"
+
+@inject HttpClient Http
+<style id="applicationStylesheet" type="text/css">
+    .mediaViewInfo {
+        --web-view-name: Web 1920 – 1;
+        --web-view-id: Web_1920__1;
+        --web-scale-on-resize: true;
+        --web-enable-deep-linking: true;
+    }
+
+    :root {
+        --web-view-ids: Web_1920__1;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        border: none;
+    }
+
+    #Web_1920__1 {
+        position: absolute;
+        width: 1920px;
+        height: 1080px;
+        background-color: rgba(255,255,255,1);
+        overflow: hidden;
+        --web-view-name: Web 1920 – 1;
+        --web-view-id: Web_1920__1;
+        --web-scale-on-resize: true;
+        --web-enable-deep-linking: true;
+    }
+
+    #Rectangle_324 {
+        fill: rgba(204,204,204,1);
+        stroke: rgba(112,112,112,1);
+        stroke-width: 1px;
+        stroke-linejoin: miter;
+        stroke-linecap: butt;
+        stroke-miterlimit: 4;
+        shape-rendering: auto;
+    }
+
+    .Rectangle_324 {
+        position: absolute;
+        overflow: visible;
+        width: 944px;
+        height: 456px;
+        left: 474px;
+        top: 124px;
+    }
+
+    #Register_Package {
+        left: 520px;
+        top: 152px;
+        position: absolute;
+        overflow: visible;
+        width: 231px;
+        white-space: nowrap;
+        text-align: left;
+        font-family: Segoe UI;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 30px;
+        color: rgba(0,0,0,1);
+    }
+
+    #Rectangle_325 {
+        fill: rgba(255,255,255,1);
+        stroke: rgba(112,112,112,1);
+        stroke-width: 1px;
+        stroke-linejoin: miter;
+        stroke-linecap: butt;
+        stroke-miterlimit: 4;
+        shape-rendering: auto;
+    }
+
+    .Rectangle_325 {
+        position: absolute;
+        overflow: visible;
+        width: 849px;
+        height: 321px;
+        left: 520px;
+        top: 219px;
+    }
+
+    #Rectangle_194 {
+        fill: rgba(255,255,255,1);
+        stroke: rgba(0,0,0,1);
+        stroke-width: 1px;
+        stroke-linejoin: miter;
+        stroke-linecap: butt;
+        stroke-miterlimit: 4;
+        shape-rendering: auto;
+    }
+
+    .Rectangle_194 {
+        position: absolute;
+        overflow: visible;
+        width: 779px;
+        height: 58px;
+        left: 555px;
+        top: 291px;
+    }
+
+    #Enter_Package_ID {
+        left: 555px;
+        top: 250px;
+        position: absolute;
+        overflow: visible;
+        width: 197px;
+        white-space: nowrap;
+        text-align: left;
+        font-family: Helvetica Neue;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 25px;
+        color: rgba(55,58,60,1);
+    }
+
+    #Package_ID {
+        left: 581px;
+        top: 306px;
+        position: absolute;
+        overflow: visible;
+        width: 130px;
+        white-space: nowrap;
+        text-align: left;
+        font-family: Helvetica Neue;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 25px;
+        color: rgba(129,138,145,1);
+    }
+
+    #Rectangle_201 {
+        fill: rgba(235,146,54,1);
+        stroke: rgba(0,0,0,1);
+        stroke-width: 1px;
+        stroke-linejoin: miter;
+        stroke-linecap: butt;
+        stroke-miterlimit: 4;
+        shape-rendering: auto;
+    }
+
+    .Rectangle_201 {
+        position: absolute;
+        overflow: visible;
+        width: 172px;
+        height: 48px;
+        left: 1162px;
+        top: 459px;
+    }
+
+    #button {
+        background-color: rgba(235,146,54,1);
+        position: absolute;
+        overflow: visible;
+        width: 172px;
+        height: 48px;
+        left: 1162px;
+        top: 459px;
+        font-family: Segoe UI;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 30px;
+        color: rgba(255,255,255,1);
+    }
+
+    #packageid {
+        position: absolute;
+        width: 779px;
+        height: 58px;
+        left: 555px;
+        top: 291px;
+        font-family: Helvetica Neue;
+        font-size: 25px;
+    }
+</style>
+<div id="Web_1920__1" style="transform-origin: 0px 0px;">
+    <svg class="Rectangle_324">
+        <rect id="Rectangle_324" rx="0" ry="0" x="0" y="0" width="944" height="456">
+        </rect>
+    </svg>
+    <div id="Register_Package">
+        <span>Register Package</span>
+    </div>
+    <svg class="Rectangle_325">
+        <rect id="Rectangle_325" rx="0" ry="0" x="0" y="0" width="849" height="321">
+        </rect>
+    </svg>
+    <svg class="Rectangle_194">
+        <rect id="Rectangle_194" rx="4" ry="4" x="0" y="0" width="779" height="58">
+        </rect>
+    </svg>
+    <input type="text" id="packageid" name="fname" placeholder="Package ID"><br><br>
+    <div id="Enter_Package_ID">
+        <span>Enter Package ID</span>
+    </div>
+    <svg class="Rectangle_201">
+        <rect id="Rectangle_201" rx="4" ry="4" x="0" y="0" width="172" height="48">
+        </rect>
+
+    </svg>
+    <button id="button" type="button">Register</button>
+</div>
+
+@code {
+
+}
