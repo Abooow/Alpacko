@@ -1,5 +1,9 @@
 ﻿@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
 
+body {
+	font-family:'Segoe UI', sans-serif
+}
+
 #blazor-error-ui {
 	background: lightyellow;
 	bottom: 0;
