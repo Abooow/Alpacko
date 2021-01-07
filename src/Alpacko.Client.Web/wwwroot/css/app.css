@@ -168,3 +168,32 @@ body {
     border: hidden;
     box-shadow: 10px 10px 8px rgba(0, 0, 0, 0.04);
 }
+
+#hand-in-container {
+    border-width: 1px;
+    border-style: solid;
+    border-color: #95999C;
+    border-radius: 10px;
+    box-shadow: 10px 10px 8px rgba(0, 0, 0, 0.04);
+    margin-left: 150px;
+    margin-right: 150px;
+}
+
+#hand-in-header {
+    text-align: center;
+    padding: 5px;
+    padding-left: 10px;
+    border-bottom: solid;
+    border-bottom-width: 1px;
+    border-color: #95999C;
+}
+
+#text-group-left {
+    width: 600px;
+    position:relative;
+}
+
+#text-group-right {
+    width: 400px;
+    position:relative;
+}
