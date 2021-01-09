@@ -144,7 +144,6 @@ body {
     color: #95999C;
     font-size: 10px;
     padding-top: 11px;
-    padding-left: 0;
 }
 
 #sek-styling {
@@ -170,6 +169,7 @@ body {
 }
 
 #hand-in-container {
+    width: auto;
     border-width: 1px;
     border-style: solid;
     border-color: #95999C;
@@ -183,17 +183,65 @@ body {
     text-align: center;
     padding: 5px;
     padding-left: 10px;
+    padding-bottom: 10px;
     border-bottom: solid;
     border-bottom-width: 1px;
     border-color: #95999C;
+    margin-top: 20px;
 }
 
 #text-group-left {
-    width: 600px;
-    position:relative;
+    margin-left: 100px;
+}
+
+#tracking-number-box {
+    width: auto;
+    text-align: center;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #95999C;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #28A5CD;
+    margin-top: 40px;
 }
 
 #text-group-right {
-    width: 400px;
-    position:relative;
+    width: auto;
+    margin-left: 50px;
+}
+
+#form-group-right-2 {
+    width: auto;
+    margin-top: 100px;
+    margin-left: 50px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #95999C;
+    border-radius: 10px;
+    box-shadow: 10px 10px 8px rgba(0, 0, 0, 0.04);
+}
+
+#nearest-sub-postoffice-txt {
+    width: auto;
+    margin-right: 170px;
+}
+
+#text-map-box {
+    width: auto;
+    margin-top: 70px;
+    margin-bottom: 70px;
+}
+
+#note-txt {
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'Segoe UI';
+    margin-right: 2px;
+}
+
+#note-msg {
+    font-size: 20px;
+    font-style: italic;
+    font-family: 'Segoe UI';
 }
