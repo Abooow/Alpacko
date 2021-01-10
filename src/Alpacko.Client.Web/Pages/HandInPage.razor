@@ -1,4 +1,5 @@
 ﻿@page "/handin"
+@inject NavigationManager UriHelper
 @using Alpacko.Client.Web.Models;
 <MainNavbar />
 
@@ -87,7 +88,7 @@
                         </div>
                     </div>
                     <div id="btn-box">
-                        <button id="nextBtn" class="rounded">Home</button>
+                        <button id="next-btn" class="rounded">Home</button>
                     </div>
                 </div>
             </div>
@@ -98,4 +99,10 @@
 @code {
     private TrackingNumberModel trackingNumberModel = new TrackingNumberModel();
     private PackageInfoModel packageInfoModel = new PackageInfoModel();
+
+    void Navigate()
+    {
+        UriHelper.NavigateTo("#");
+    }
+
 }
