@@ -68,6 +68,15 @@ body {
     margin-left: 500px !important;
 }
 
+.hand-in-left {
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.hand-in-right {
+    margin-left: 50px;
+}
+
 #form-group-left {
     width: 400px;
     border-width: 1px;
@@ -136,8 +145,8 @@ body {
     font-family: 'Segoe UI';
     font-weight: bold;
     color: #95999C;
-    padding-left: 40px;
-    width: 240px;
+    text-align: left;
+    margin: 5px;
 }
 
 #info-title {
@@ -158,10 +167,10 @@ body {
 
 #btn-box {
     margin-top: 50px;
+    margin-left: 65px;
 }
 
 .next-btn {
-    margin-left: 130px;
     width: 130px;
     height: 50px;
     background: #28A5CD;
@@ -181,8 +190,8 @@ body {
     border-color: #95999C;
     border-radius: 10px;
     box-shadow: 10px 10px 8px rgba(0, 0, 0, 0.04);
-    margin-left: 150px;
-    margin-right: 150px;
+    margin-left: 400px;
+    margin-right: 400px;
 }
 
 #hand-in-header {
@@ -197,7 +206,7 @@ body {
 }
 
 #text-group-left {
-    margin-left: 100px;
+    /*margin-left: 100px;*/
 }
 
 #tracking-number-box {
@@ -212,15 +221,11 @@ body {
     margin-top: 40px;
 }
 
-#text-group-right {
-    width: auto;
-    margin-left: 50px;
-}
-
 #form-group-right-2 {
     width: auto;
     margin-top: 100px;
-    margin-left: 50px;
+    max-width: fit-content;
+    text-align: center;
     border-width: 1px;
     border-style: solid;
     border-color: #95999C;
@@ -230,7 +235,6 @@ body {
 
 #nearest-sub-postoffice-txt {
     width: auto;
-    margin-right: 170px;
 }
 
 #text-map-box {
