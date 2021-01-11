@@ -20,186 +20,183 @@
         </li>
     </ul>
 </div>
-<div class="container-fluid">
-    <p id="indication">* indicates a required field</p>
-    <div class="row">
-        <div class="p-2 col">
-            <EditForm Model="@senderModel">
-                <DataAnnotationsValidator />
-                <div id="form-group-left" class="form-group">
-                    <h1 id="main-box-header">Sender</h1>
-                    <p id="sub-text-main-box-header">Who is sending the package?</p>
-                    <div class="d-inline-flex">
-                        <div class="p-2">
-                            <label for="firstname">First name *</label>
-                            <InputText type="firstname" class="form-control" id="firstname" @bind-Value="@senderModel.FirstName" placeholder="First Name" />
-                            <ValidationMessage For="@(() => senderModel.FirstName)" />
-                        </div>
-                        <div class="p-2">
-                            <label for="lastname">Last name *</label>
-                            <InputText type="lastname" class="form-control" id="lastname" @bind-Value="@senderModel.LastName" placeholder="Last Name" />
-                            <ValidationMessage For="@(() => senderModel.LastName)" />
-                        </div>
-                    </div>
-                    <div class="d-inline-flex p-2">
-                        <div id="address-box">
-                            <label for="address">Address *</label>
-                            <InputText type="address" class="form-control" id="address" @bind-Value="@senderModel.Address" placeholder="Address" />
-                            <ValidationMessage For="@(() => senderModel.Address)" />
-                        </div>
-                    </div>
-                    <div class="d-inline-flex ">
-                        <div class="p-2">
-                            <label for="zipcode">Zip Code *</label>
-                            <InputText class="form-control" id="zipcode" @bind-Value="@senderModel.ZipCode" placeholder="Zip Code" />
-                            <ValidationMessage For="@(() => senderModel.ZipCode)" />
-                        </div>
-                        <div class="p-2">
-                            <label for="city">City *</label>
-                            <InputText type="city" class="form-control" id="city" @bind-Value="@senderModel.City" placeholder="City" />
-                            <ValidationMessage For="@(() => senderModel.City)" />
-                        </div>
+<div class="row">
+    <EditForm id="address-form" class="d-inline-flex" Model="@addressModel">
+        <div class="p-2 col ml-500px">
+            <p id="indication">* indicates a required field</p>
+            <DataAnnotationsValidator />
+            <div id="form-group-left" class="form-group">
+                <h1 id="main-box-header">Sender</h1>
+                <p id="sub-text-main-box-header">Who is sending the package?</p>
+                <div class="d-inline-flex">
+                    <div class="p-2">
+                        <label for="firstname">First name *</label>
+                        <InputText type="firstname" class="form-control" id="firstname" @bind-Value="@addressModel.SenderFirstName" placeholder="First Name" />
+                        <ValidationMessage For="@(() => addressModel.SenderFirstName)" />
                     </div>
                     <div class="p-2">
-                        <div>
-                            <label for="email">Email *</label>
-                            <InputText type="Email" class="form-control" id="Email" @bind-Value="@senderModel.Email" placeholder="Email" />
-                            <ValidationMessage For="@(() => senderModel.Email)" />
-                            <p id="sub-text-main-box-header">Receipt, Shipping Note, Delivery confirmation will be sent to this e-mail</p>
-                        </div>
+                        <label for="lastname">Last name *</label>
+                        <InputText type="lastname" class="form-control" id="lastname" @bind-Value="@addressModel.SenderLastName" placeholder="Last Name" />
+                        <ValidationMessage For="@(() => addressModel.SenderLastName)" />
                     </div>
                 </div>
-            </EditForm>
-        </div>
-        <div id="mid-main-box" class=" p-2 col">
-            <EditForm Model="@receiverModel">
-                <DataAnnotationsValidator />
-                <div id="form-group-mid">
-                    <h1 id="main-box-header">Receiver</h1>
-                    <p id="sub-text-main-box-header">Where's the package going?</p>
-                    <div class="d-inline-flex">
-                        <div class="p-2">
-                            <label for="firstname">First name *</label>
-                            <InputText type="firstname" class="form-control" id="firstname" @bind-Value="@receiverModel.FirstName" placeholder="First Name" />
-                            <ValidationMessage For="@(() => receiverModel.FirstName)" />
-                        </div>
-                        <div class="p-2">
-                            <label for="lastname">Last name *</label>
-                            <InputText type="lastname" class="form-control" id="lastname" @bind-Value="@receiverModel.LastName" placeholder="Last Name" />
-                            <ValidationMessage For="@(() =>  receiverModel.LastName)" />
-                        </div>
-                    </div>
-                    <div>
-                        <div class="p-2">
-                            <label for="C/o">C/o</label>
-                            <InputText type="C/o" class="form-control" id="C/o" @bind-Value="@receiverModel.Co" placeholder="C/o" />
-                            <ValidationMessage For="@(() =>  receiverModel.Co)" />
-                        </div>
-                    </div>
-                    <div>
-                        <div id="address-box" class="p-2">
-                            <label for="address">Address *</label>
-                            <InputText type="address" class="form-control" id="address" @bind-Value="@receiverModel.Address" placeholder="Address" />
-                            <ValidationMessage For="@(() =>  receiverModel.Address)" />
-                        </div>
-                    </div>
-                    <div class="d-inline-flex ">
-                        <div class="p-2">
-                            <label for="zipcode">Zip Code *</label>
-                            <InputText class="form-control" id="zipcode" @bind-Value="@receiverModel.ZipCode" placeholder="Zip Code" />
-                            <ValidationMessage For="@(() =>  receiverModel.ZipCode)" />
-                        </div>
-                        <div class="p-2">
-                            <label for="city">City *</label>
-                            <InputText type="city" class="form-control" id="city" @bind-Value="@receiverModel.City" placeholder="City" />
-                            <ValidationMessage For="@(() =>  receiverModel.City)" />
-                        </div>
-                    </div>
-                    <div>
-                        <div class="p-2">
-                            <label for="country">Country</label>
-                            <InputText type="country" class="form-control" id="country" @bind-Value="@receiverModel.Country" placeholder="Country" />
-                            <ValidationMessage For="@(() =>  receiverModel.Country)" />
-                        </div>
-                    </div>
-                    <div>
-                        <div class="p-2">
-                            <label for="email">Email</label>
-                            <InputText type="Email" class="form-control" id="Email" @bind-Value="@receiverModel.Email" placeholder="Email" />
-                            <ValidationMessage For="@(() => receiverModel.Email)" />
-                            <p id="sub-text-main-box-header">Transport information will be sent to this e-mail</p>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="p-2">
-                            <label for="phonenumber">Phone number</label>
-                            <InputText type="tel" class="form-control" id="PhoneNumber" @bind-Value="@receiverModel.PhoneNumber" placeholder="Phone Number" />
-                            <ValidationMessage For="@(() =>  receiverModel.PhoneNumber)" />
-                            <p id="sub-text-main-box-header">Transport information will be sent as an SMS to this number</p>
-                        </div>
+                <div class="d-inline-flex p-2">
+                    <div id="address-box">
+                        <label for="address">Address *</label>
+                        <InputText type="address" class="form-control" id="address" @bind-Value="@addressModel.SenderAddress" placeholder="Address" />
+                        <ValidationMessage For="@(() => addressModel.SenderAddress)" />
                     </div>
                 </div>
-            </EditForm>
-        </div>
-        <div class="col">
-            <div id="form-group-right">
-                <div id="package-info-box">
-                    <h3 id="package-info-header">Package Information</h3>
-                </div>
-                <div id="package-data" class="d-inline-flex">
-                    <table class="table table-sm table-borderless">
-                        <tr id="info-title">
-                            <th scope="row">Size:   </th>
-                        </tr>
-                        <tr id="info-title">
-                            <th scope="row">Length: </th>
-                        </tr>
-                        <tr id="info-title">
-                            <th scope="row">Width:  </th>
-                        </tr>
-                        <tr id="info-title">
-                            <th scope="row">Height: </th>
-                        </tr>
-                        <tr id="info-title">
-                            <th scope="row">Weight: </th>
-                        </tr>
-                    </table>
-                    <table class="table table-sm table-borderless text-right">
-                        <tr>
-                            <th scope="row">Medium @packageInfoModel.Size </th>
-                        </tr>
-                        <tr>
-                            <th scope="row">@packageInfoModel.Length</th>
-                        </tr>
-                        <tr>
-                            <th scope="row">@packageInfoModel.Width</th>
-                        </tr>
-                        <tr>
-                            <th scope="row">@packageInfoModel.Height</th>
-                        </tr>
-                        <tr>
-                            <th scope="row">@packageInfoModel.Weight</th>
-                        </tr>
-                    </table>
+                <div class="d-inline-flex ">
+                    <div class="p-2">
+                        <label for="zipcode">Zip Code *</label>
+                        <InputText class="form-control" id="zipcode" @bind-Value="@addressModel.SenderZipCode" placeholder="Zip Code" />
+                        <ValidationMessage For="@(() => addressModel.SenderZipCode)" />
+                    </div>
+                    <div class="p-2">
+                        <label for="city">City *</label>
+                        <InputText type="city" class="form-control" id="city" @bind-Value="@addressModel.SenderCity" placeholder="City" />
+                        <ValidationMessage For="@(() => addressModel.SenderCity)" />
+                    </div>
                 </div>
                 <div class="p-2">
-                    <table class="table table-sm table-borderless d-inline-flex">
-                        <tr>
-                            <th scope="row" style="padding-left:20px">Price </th>
-                            <th id="vat-styling">(incl. VAT)</th>
-                            <th id="sek-styling">???SEK</th>
-                        </tr>
-                    </table>
+                    <div>
+                        <label for="email">Email *</label>
+                        <InputText type="Email" class="form-control" id="Email" @bind-Value="@addressModel.SenderEmail" placeholder="Email" />
+                        <ValidationMessage For="@(() => addressModel.SenderEmail)" />
+                        <p id="sub-text-main-box-header">Receipt, Shipping Note, Delivery confirmation will be sent to this e-mail</p>
+                    </div>
                 </div>
             </div>
-            <div id="btn-box">
-                <button id="nextBtn" class="rounded">NEXT</button>
+        </div>
+        <div id="mid-main-box" class=" p-2 col mt-3">
+            <div id="form-group-mid">
+                <h1 id="main-box-header">Receiver</h1>
+                <p id="sub-text-main-box-header">Where's the package going?</p>
+                <div class="d-inline-flex">
+                    <div class="p-2">
+                        <label for="firstname">First name *</label>
+                        <InputText type="firstname" class="form-control" id="firstname" @bind-Value="@addressModel.ReceiverFirstName" placeholder="First Name" />
+                        <ValidationMessage For="@(() => addressModel.ReceiverFirstName)" />
+                    </div>
+                    <div class="p-2">
+                        <label for="lastname">Last name *</label>
+                        <InputText type="lastname" class="form-control" id="lastname" @bind-Value="@addressModel.ReceiverLastName" placeholder="Last Name" />
+                        <ValidationMessage For="@(() => addressModel.ReceiverLastName)" />
+                    </div>
+                </div>
+                <div>
+                    <div class="p-2">
+                        <label for="C/o">C/o</label>
+                        <InputText type="C/o" class="form-control" id="C/o" @bind-Value="@addressModel.ReceiverCo" placeholder="C/o" />
+                        <ValidationMessage For="@(() =>addressModel.ReceiverCo)" />
+                    </div>
+                </div>
+                <div>
+                    <div id="address-box" class="p-2">
+                        <label for="address">Address *</label>
+                        <InputText type="address" class="form-control" id="address" @bind-Value="@addressModel.ReceiverAddress" placeholder="Address" />
+                        <ValidationMessage For="@(() =>addressModel.ReceiverAddress)" />
+                    </div>
+                </div>
+                <div class="d-inline-flex ">
+                    <div class="p-2">
+                        <label for="zipcode">Zip Code *</label>
+                        <InputText class="form-control" id="zipcode" @bind-Value="@addressModel.ReceiverZipCode" placeholder="Zip Code" />
+                        <ValidationMessage For="@(() =>addressModel.ReceiverZipCode)" />
+                    </div>
+                    <div class="p-2">
+                        <label for="city">City *</label>
+                        <InputText type="city" class="form-control" id="city" @bind-Value="@addressModel.ReceiverCity" placeholder="City" />
+                        <ValidationMessage For="@(() =>addressModel.ReceiverCity)" />
+                    </div>
+                </div>
+                <div>
+                    <div class="p-2">
+                        <label for="country">Country</label>
+                        <InputText type="country" class="form-control" id="country" @bind-Value="@addressModel.ReceiverCountry" placeholder="Country" />
+                        <ValidationMessage For="@(() =>addressModel.ReceiverCountry)" />
+                    </div>
+                </div>
+                <div>
+                    <div class="p-2">
+                        <label for="email">Email</label>
+                        <InputText type="Email" class="form-control" id="Email" @bind-Value="@addressModel.ReceiverEmail" placeholder="Email" />
+                        <ValidationMessage For="@(() =>addressModel.ReceiverEmail)" />
+                        <p id="sub-text-main-box-header">Transport information will be sent to this e-mail</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="p-2">
+                        <label for="phonenumber">Phone number</label>
+                        <InputText type="tel" class="form-control" id="PhoneNumber" @bind-Value="@addressModel.ReceiverPhoneNumber" placeholder="Phone Number" />
+                        <ValidationMessage For="@(() => addressModel.ReceiverPhoneNumber)" />
+                        <p id="sub-text-main-box-header">Transport information will be sent as an SMS to this number</p>
+                    </div>
+                </div>
             </div>
+        </div>
+    </EditForm>
+    <div class="col">
+        <div id="form-group-right">
+            <div id="package-info-box">
+                <h3 id="package-info-header">Package Information</h3>
+            </div>
+            <div id="package-data" class="d-inline-flex">
+                <table class="table table-sm table-borderless">
+                    <tr id="info-title">
+                        <th scope="row">Size:   </th>
+                    </tr>
+                    <tr id="info-title">
+                        <th scope="row">Length: </th>
+                    </tr>
+                    <tr id="info-title">
+                        <th scope="row">Width:  </th>
+                    </tr>
+                    <tr id="info-title">
+                        <th scope="row">Height: </th>
+                    </tr>
+                    <tr id="info-title">
+                        <th scope="row">Weight: </th>
+                    </tr>
+                </table>
+                <table class="table table-sm table-borderless text-right">
+                    <tr>
+                        <th scope="row">Medium @packageInfoModel.Size </th>
+                    </tr>
+                    <tr>
+                        <th scope="row">@packageInfoModel.Length</th>
+                    </tr>
+                    <tr>
+                        <th scope="row">@packageInfoModel.Width</th>
+                    </tr>
+                    <tr>
+                        <th scope="row">@packageInfoModel.Height</th>
+                    </tr>
+                    <tr>
+                        <th scope="row">@packageInfoModel.Weight</th>
+                    </tr>
+                </table>
+            </div>
+            <div class="p-2">
+                <table class="table table-sm table-borderless d-inline-flex">
+                    <tr>
+                        <th scope="row" style="padding-left:20px">Price </th>
+                        <th id="vat-styling">(incl. VAT)</th>
+                        <th id="sek-styling">???SEK</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div id="btn-box">
+            <button class="next-btn rounded" form="address-form">NEXT</button>
         </div>
     </div>
 </div>
 
 @code {
+
+    private AddressModel addressModel = new AddressModel();
     private SenderModel senderModel = new SenderModel();
     private ReceiverModel receiverModel = new ReceiverModel();
     private PackageInfoModel packageInfoModel = new PackageInfoModel();

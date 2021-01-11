@@ -88,7 +88,7 @@
                         </div>
                     </div>
                     <div id="btn-box">
-                        <button id="nextBtn" class="rounded">Home</button>
+                        <button class=" next-btn rounded" @onclick="@(() => UriHelper.NavigateTo("#"))">Home</button>
                     </div>
                 </div>
             </div>
@@ -99,10 +99,4 @@
 @code {
     private TrackingNumberModel trackingNumberModel = new TrackingNumberModel();
     private PackageInfoModel packageInfoModel = new PackageInfoModel();
-
-    void Navigate()
-    {
-        UriHelper.NavigateTo("#");
-    }
-
 }
