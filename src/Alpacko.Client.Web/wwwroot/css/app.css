@@ -1,53 +1,10 @@
 @import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
 
 body {
-	font-family:'Segoe UI', sans-serif
+    font-family: 'Segoe UI', sans-serif
 }
 
 #blazor-error-ui {
-	background: lightyellow;
-	bottom: 0;
-	box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
-	display: none;
-	left: 0;
-	padding: 0.6rem 1.25rem 0.7rem 1.25rem;
-	position: fixed;
-	width: 100%;
-	z-index: 1000;
-}
-
-	#blazor-error-ui .dismiss {
-		cursor: pointer;
-		position: absolute;
-		right: 0.75rem;
-		top: 0.5rem;
-	}
-
-.bg-blue {
-	background-color: #28A5CD !important;
-}
-
-.text-25 {
-	font-size: 1.2rem;
-}
-
-.text-orange-hover:hover {
-	color: #FF9932 !important;
-}
-
-.btn-outline-orange {
-	border: #FF9932 1px solid !important;
-	border-radius: 4px !important;
-	color: white !important;
-	background-color: none !important;
-}
-
-	.btn-outline-orange:hover {
-		background-color: #FF9932 !important;
-	}
-
-.border-3 {
-	border-width: 3px !important;
     background: lightyellow;
     bottom: 0;
     box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
@@ -57,6 +14,40 @@ body {
     position: fixed;
     width: 100%;
     z-index: 1000;
+}
+
+    #blazor-error-ui .dismiss {
+        cursor: pointer;
+        position: absolute;
+        right: 0.75rem;
+        top: 0.5rem;
+    }
+
+.bg-blue {
+    background-color: #28A5CD !important;
+}
+
+.text-25 {
+    font-size: 1.2rem;
+}
+
+.text-orange-hover:hover {
+    color: #FF9932 !important;
+}
+
+.btn-outline-orange {
+    border: #FF9932 1px solid !important;
+    border-radius: 4px !important;
+    color: white !important;
+    background-color: none !important;
+}
+
+    .btn-outline-orange:hover {
+        background-color: #FF9932 !important;
+    }
+
+.border-3 {
+    border-width: 3px !important;
 }
 
 .nav {
@@ -71,6 +62,19 @@ body {
 .validation-message {
     color: #dc3545;
     font-size: 80%;
+}
+
+.ml-500px {
+    margin-left: 500px !important;
+}
+
+.hand-in-left {
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.hand-in-right {
+    margin-left: 50px;
 }
 
 #form-group-left {
@@ -141,8 +145,8 @@ body {
     font-family: 'Segoe UI';
     font-weight: bold;
     color: #95999C;
-    padding-left: 40px;
-    width: 240px;
+    text-align: left;
+    margin: 5px;
 }
 
 #info-title {
@@ -150,24 +154,23 @@ body {
 }
 
 #vat-styling {
-    color: #95999C; 
-    font-size: 10px; 
+    color: #95999C;
+    font-size: 10px;
     padding-top: 11px;
-    padding-left: 0;
 }
 
 #sek-styling {
     color: #076DD4;
-    text-align: right; 
+    text-align: right;
     padding-left: 65px;
 }
 
 #btn-box {
     margin-top: 50px;
+    margin-left: 65px;
 }
 
-#nextBtn {
-    margin-left: 130px;
+.next-btn {
     width: 130px;
     height: 50px;
     background: #28A5CD;
@@ -175,5 +178,80 @@ body {
     font-family: 'Segoe UI';
     font-size: 20px;
     border: hidden;
+    text-align: center;
+    padding-top: 5px;
     box-shadow: 10px 10px 8px rgba(0, 0, 0, 0.04);
+}
+
+#hand-in-container {
+    width: auto;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #95999C;
+    border-radius: 10px;
+    box-shadow: 10px 10px 8px rgba(0, 0, 0, 0.04);
+    margin-left: 400px;
+    margin-right: 400px;
+}
+
+#hand-in-header {
+    text-align: center;
+    padding: 5px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    border-bottom: solid;
+    border-bottom-width: 1px;
+    border-color: #95999C;
+    margin-top: 20px;
+}
+
+#text-group-left {
+    /*margin-left: 100px;*/
+}
+
+#tracking-number-box {
+    width: auto;
+    text-align: center;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #95999C;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #28A5CD;
+    margin-top: 40px;
+}
+
+#form-group-right-2 {
+    width: auto;
+    margin-top: 100px;
+    max-width: fit-content;
+    text-align: center;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #95999C;
+    border-radius: 10px;
+    box-shadow: 10px 10px 8px rgba(0, 0, 0, 0.04);
+}
+
+#nearest-sub-postoffice-txt {
+    width: auto;
+}
+
+#text-map-box {
+    width: auto;
+    margin-top: 70px;
+    margin-bottom: 70px;
+}
+
+#note-txt {
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'Segoe UI';
+    margin-right: 2px;
+}
+
+#note-msg {
+    font-size: 20px;
+    font-style: italic;
+    font-family: 'Segoe UI';
 }

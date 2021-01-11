@@ -1,0 +1,120 @@
+﻿@page "/handin"
+@inject NavigationManager UriHelper
+@using Alpacko.Client.Web.Models;
+<MainNavbar />
+<div class="container-fluid mt-3">
+    <ul class="nav nav-pills justify-content-center">
+        <li class="nav-item ">
+            <div class="nav-link">Product</div>
+        </li>
+        <li class="nav-item ">
+            <div class="nav-link">Address</div>
+        </li>
+        <li class="nav-item ">
+            <div class="nav-link">Payment</div>
+        </li>
+        <li class="nav-item ">
+            <div class="nav-link">Print</div>
+        </li>
+        <li class="nav-item ">
+            <div class="nav-link active">Hand in</div>
+        </li>
+    </ul>
+</div>
+<div class="container-fluid mt-5">
+    <div id="hand-in-container">
+        <div class="row">
+            <div class="col">
+                <h3 id="hand-in-header">Your payment has been received!</h3>
+            </div>
+        </div>
+        <div class="row mx-auto">
+            <div class="col d-inline-flex hand-in-left">
+                <div id="text-group-left" class="p-2">
+                    <div id="tracking-number-box">
+                        <h3 style="font-size:28px; color:white;">Your tracking number:</h3>
+                        <h1 style="font-size:47px; color:white;">ABC-123-123 @trackingNumberModel.TrackingNumber</h1>
+                    </div>
+                    <div id="text-map-box" class="d-inline-flex">
+                        <div id="nearest-sub-postoffice-txt">
+                            <p style="font-size:25px;">
+                                You can now hand in the package
+                                to the nearest sub-postoffice.
+                                Your nearest sub-postoffice is here:
+                            </p>
+                        </div>
+                        <div style="background-color: #7E7D7D">
+                            <img src="/images/logo/logo-name-simple.svg" width="324" height="256" alt="">
+                        </div>
+                    </div>
+                    <div class="p-2 d-inline-flex">
+                        <h2 id="note-txt" style="font-size:20px; font-family:'Segoe UI';">Note: </h2>
+                        <p id="note-msg"> Make sure you do not cover the address information or the codebar when putting the sticker on the package</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4 hand-in-right">
+                <div id="text-group-right" class="p-2">
+                    <div id="form-group-right-2">
+                        <div>
+                            <h3 id="package-info-header">Package Information</h3>
+                        </div>
+                        <div id="package-data" class=" col d-inline-flex">
+                            <table class="table table-sm table-borderless">
+                                <tr id="info-title">
+                                    <th scope="row">Size:   </th>
+                                </tr>
+                                <tr id="info-title">
+                                    <th scope="row">Length: </th>
+                                </tr>
+                                <tr id="info-title">
+                                    <th scope="row">Width:  </th>
+                                </tr>
+                                <tr id="info-title">
+                                    <th scope="row">Height: </th>
+                                </tr>
+                                <tr id="info-title">
+                                    <th scope="row">Weight: </th>
+                                </tr>
+                            </table>
+                            <table class="table table-sm table-borderless text-right">
+                                <tr>
+                                    <th scope="row">Medium @packageInfoModel.Size </th>
+                                </tr>
+                                <tr>
+                                    <th scope="row">@packageInfoModel.Length</th>
+                                </tr>
+                                <tr>
+                                    <th scope="row">@packageInfoModel.Width</th>
+                                </tr>
+                                <tr>
+                                    <th scope="row">@packageInfoModel.Height</th>
+                                </tr>
+                                <tr>
+                                    <th scope="row">@packageInfoModel.Weight</th>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="p-2">
+                            <table class="table table-sm table-borderless d-inline-flex">
+                                <tr>
+                                    <th scope="row" style="padding-left:20px">Price </th>
+                                    <th id="vat-styling">(incl. VAT)</th>
+                                    <th id="sek-styling">???SEK</th>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div id="btn-box">
+                        <button class=" next-btn rounded" @onclick="@(() => UriHelper.NavigateTo("#"))">Home</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private TrackingNumberModel trackingNumberModel = new TrackingNumberModel();
+    private PackageInfoModel packageInfoModel = new PackageInfoModel();
+}
