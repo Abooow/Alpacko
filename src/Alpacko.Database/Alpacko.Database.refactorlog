@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="44b6a918-d318-4c27-836e-baecb26832fc" ChangeDateTime="01/10/2021 14:12:25">
+    <Property Name="ElementName" Value="[dbo].[UserRole].[C]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[UserRole]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="CreatedDate" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="336cd074-08d3-417c-a2e9-cab2ee47df72" ChangeDateTime="01/10/2021 14:51:18">
+    <Property Name="ElementName" Value="[dbo].[PackageDetail].[Size]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[PackageDetail]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="SizeId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="d20e6827-08f9-46af-9a70-7f5f980c3bfc" ChangeDateTime="01/10/2021 15:05:23">
+    <Property Name="ElementName" Value="[dbo].[PackageDetail].[Weight]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[PackageDetail]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="MinWeight" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="a781d7ff-6453-41b5-b591-673af6bab9f3" ChangeDateTime="01/10/2021 15:05:29">
+    <Property Name="ElementName" Value="[dbo].[PackageDetail].[WeightType]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[PackageDetail]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="MaxWeight" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="29f46e9a-2b31-40af-8f86-246a5e9cfd8d" ChangeDateTime="01/11/2021 05:59:41">
+    <Property Name="ElementName" Value="[dbo].[PackageDetail].[SizeId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[PackageDetail]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="SizeNameId" />
+  </Operation>
+</Operations>
