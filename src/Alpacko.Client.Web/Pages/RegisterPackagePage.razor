@@ -1,9 +1,14 @@
-﻿
+﻿@using Alpacko.Client.Web.Models;
 
 @page "/RegisterPackage"
 <MainNavbar></MainNavbar>
 @inject HttpClient Http
 <style id="applicationStylesheet" type="text/css">
+    .validationmessage{
+        position:absolute;
+        left:555px;
+        top:358px;
+    }
     .mediaViewInfo {
         --web-view-name: Web 1920 – 1;
         --web-view-id: Web_1920__1;
@@ -121,20 +126,6 @@
         color: rgba(55,58,60,1);
     }
 
-    #Package_ID {
-        left: 581px;
-        top: 306px;
-        position: absolute;
-        overflow: visible;
-        width: 130px;
-        white-space: nowrap;
-        text-align: left;
-        font-family: Helvetica Neue;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 25px;
-        color: rgba(129,138,145,1);
-    }
 
     #button {
         position: absolute;
@@ -148,7 +139,7 @@
         font-weight: normal;
         font-size: 30px;
         background: #28A5CD;
-        color:white;
+        color: white;
     }
 
     #packageid {
@@ -159,6 +150,7 @@
         top: 291px;
         font-family: Helvetica Neue;
         font-size: 25px;
+        padding-left:1rem;
     }
 </style>
 <div id="Web_1920__1" style="transform-origin: 0px 0px;">
@@ -177,13 +169,31 @@
         <rect id="container3" rx="4" ry="4" x="0" y="0" width="780" height="60">
         </rect>
     </svg>
-    <input type="text" id="packageid" name="fname" placeholder="Package ID"><br><br>
+    <EditForm Model="@packageModel" id="packageidForm">
+        <DataAnnotationsValidator />
+        <input type="text" id="packageid" name="fname" placeholder="Package ID" @bind-value="@packageModel.PackageID"><br><br>
+      <div class="validationmessage">
+        <ValidationMessage  For="@(() => packageModel.PackageID)" />
+      </div>
+    </EditForm>
     <div id="Enter_Package_ID">
         <span>Enter Package ID</span>
     </div>
-    <button id="button" type="button">Register</button>
+    <button form="packageidForm" id="button" type="submit">Register</button>
 </div>
+@*<EditForm Model="@signInModel">
+    <DataAnnotationsValidator />
 
-@code {
-
-}
+    <div class="form-group">
+        <label class="label">E-mail</label>
+        <InputText id="email" class="form-control" type="email" @bind-Value="@signInModel.Email"></InputText>
+        <ValidationMessage For="@(() => @signInModel.Email)" />
+    </div>
+    <div class="form-group">
+        <label class="label">Password</label>
+        <InputText id="password" class="form-control" type="password" @bind-Value="@signInModel.Password"></InputText>
+        <ValidationMessage For="@(() => @signInModel.Password)" />
+    </div>*@
+    @code {
+        private RegisterPackageModel packageModel = new RegisterPackageModel();
+    }
