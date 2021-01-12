@@ -1,0 +1,199 @@
+﻿@using Alpacko.Client.Web.Models;
+
+@page "/RegisterPackage"
+<MainNavbar></MainNavbar>
+@inject HttpClient Http
+<style id="applicationStylesheet" type="text/css">
+    .validationmessage{
+        position:absolute;
+        left:555px;
+        top:358px;
+    }
+    .mediaViewInfo {
+        --web-view-name: Web 1920 – 1;
+        --web-view-id: Web_1920__1;
+        --web-scale-on-resize: true;
+        --web-enable-deep-linking: true;
+    }
+
+    :root {
+        --web-view-ids: Web_1920__1;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        border: none;
+    }
+
+    #Web_1920__1 {
+        position: absolute;
+        width: 1920px;
+        height: 1080px;
+        background-color: rgba(255,255,255,1);
+        overflow: hidden;
+        --web-view-name: Web 1920 – 1;
+        --web-view-id: Web_1920__1;
+        --web-scale-on-resize: true;
+        --web-enable-deep-linking: true;
+    }
+
+    #container1 {
+        fill: rgba(204,204,204,1);
+        stroke: rgba(112,112,112,1);
+        stroke-width: 1px;
+        stroke-linejoin: miter;
+        stroke-linecap: butt;
+        stroke-miterlimit: 4;
+        shape-rendering: auto;
+    }
+
+    .container1 {
+        position: absolute;
+        overflow: visible;
+        width: 944px;
+        height: 456px;
+        left: 474px;
+        top: 124px;
+    }
+
+    #Register_Package {
+        left: 520px;
+        top: 152px;
+        position: absolute;
+        overflow: visible;
+        width: 231px;
+        white-space: nowrap;
+        text-align: left;
+        font-family: Segoe UI;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 30px;
+        color: rgba(0,0,0,1);
+    }
+
+    #container2 {
+        fill: rgba(255,255,255,1);
+        stroke: rgba(112,112,112,1);
+        stroke-width: 1px;
+        stroke-linejoin: miter;
+        stroke-linecap: butt;
+        stroke-miterlimit: 4;
+        shape-rendering: auto;
+    }
+
+    .container2 {
+        position: absolute;
+        overflow: visible;
+        width: 849px;
+        height: 321px;
+        left: 520px;
+        top: 219px;
+    }
+
+    #container3 {
+        fill: rgba(255,255,255,1);
+        stroke: rgba(0,0,0,1);
+        stroke-width: 1px;
+        stroke-linejoin: miter;
+        stroke-linecap: butt;
+        stroke-miterlimit: 4;
+        shape-rendering: auto;
+    }
+
+    .container3 {
+        position: absolute;
+        overflow: visible;
+        width: 779px;
+        height: 58px;
+        left: 555px;
+        top: 291px;
+    }
+
+    #Enter_Package_ID {
+        left: 555px;
+        top: 250px;
+        position: absolute;
+        overflow: visible;
+        width: 197px;
+        white-space: nowrap;
+        text-align: left;
+        font-family: Helvetica Neue;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 25px;
+        color: rgba(55,58,60,1);
+    }
+
+
+    #button {
+        position: absolute;
+        overflow: visible;
+        width: 172px;
+        height: 48px;
+        left: 1162px;
+        top: 459px;
+        font-family: Segoe UI;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 30px;
+        background: #28A5CD;
+        color: white;
+    }
+
+    #packageid {
+        position: absolute;
+        width: 779px;
+        height: 58px;
+        left: 555px;
+        top: 291px;
+        font-family: Helvetica Neue;
+        font-size: 25px;
+        padding-left:1rem;
+    }
+</style>
+<div id="Web_1920__1" style="transform-origin: 0px 0px;">
+    <svg class="container1">
+        <rect id="container1" width="945" height="455">
+        </rect>
+    </svg>
+    <div id="Register_Package">
+        <span>Register Package</span>
+    </div>
+    <svg class="container2">
+        <rect id="container2" width="850" height="320">
+        </rect>
+    </svg>
+    <svg class="container3">
+        <rect id="container3" rx="4" ry="4" x="0" y="0" width="780" height="60">
+        </rect>
+    </svg>
+    <EditForm Model="@packageModel" id="packageidForm">
+        <DataAnnotationsValidator />
+        <input type="text" id="packageid" name="fname" placeholder="Package ID" @bind-value="@packageModel.PackageID"><br><br>
+      <div class="validationmessage">
+        <ValidationMessage  For="@(() => packageModel.PackageID)" />
+      </div>
+    </EditForm>
+    <div id="Enter_Package_ID">
+        <span>Enter Package ID</span>
+    </div>
+    <button form="packageidForm" id="button" type="submit">Register</button>
+</div>
+@*<EditForm Model="@signInModel">
+    <DataAnnotationsValidator />
+
+    <div class="form-group">
+        <label class="label">E-mail</label>
+        <InputText id="email" class="form-control" type="email" @bind-Value="@signInModel.Email"></InputText>
+        <ValidationMessage For="@(() => @signInModel.Email)" />
+    </div>
+    <div class="form-group">
+        <label class="label">Password</label>
+        <InputText id="password" class="form-control" type="password" @bind-Value="@signInModel.Password"></InputText>
+        <ValidationMessage For="@(() => @signInModel.Password)" />
+    </div>*@
+    @code {
+        private RegisterPackageModel packageModel = new RegisterPackageModel();
+    }
