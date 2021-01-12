@@ -1,16 +1,13 @@
 ﻿@page "/signin"
-@inject NavigationManager navigationManager
-@inject NavigationManager UriHelper
 @using Alpacko.Client.Web.Models;
+
 <MainNavbar />
 <br />
 <br />
 <div class="form">
     <h2 class="title">Sign In</h2>
-
     <EditForm Model="@signInModel">
         <DataAnnotationsValidator />
-
         <div class="form-group">
             <label class="label">E-mail</label>
             <InputText id="email" class="form-control" type="email" @bind-Value="@signInModel.Email"></InputText>
@@ -30,7 +27,6 @@
                 <a href="/account/forgotpassword">Forgot password?</a>
             </div>
         </div>
-
         <div class="field" style="margin-bottom: 1em;">
             <div class="control">
                 <button type="submit" class="sign-in-btn rounded">Sign in</button>
@@ -41,6 +37,7 @@
         </div>
     </EditForm>
 </div>
+
 @code {
     private SignInModel signInModel = new SignInModel();
 }
