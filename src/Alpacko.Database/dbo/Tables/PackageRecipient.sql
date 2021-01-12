@@ -7,6 +7,6 @@
     [Address] NVARCHAR(50) NOT NULL, 
     [ZipCode] NVARCHAR(5) NOT NULL, 
     [City] NVARCHAR(50) NOT NULL, 
-    [Email] NVARCHAR(50) NULL, 
+    [Email] NVARCHAR(256) NULL, 
     [PhoneNumber] NVARCHAR(50) NULL
 )

@@ -5,6 +5,7 @@
     [Address] NVARCHAR(50) NOT NULL, 
     [ZipCode] NVARCHAR(50) NOT NULL, 
     [City] NVARCHAR(50) NOT NULL, 
+    [Email] NVARCHAR(256) NOT NULL, 
     [CreatedDate] DATETIME2 NOT NULL DEFAULT getutcdate(), 
     [ModifiedDate] DATETIME2 NULL, 
     [DeletedDate] DATETIME2 NULL
