@@ -1,4 +1,4 @@
-﻿@inject NavigationManager UriHelper
+﻿@inject NavigationManager navigationManager
 
 <nav class="navbar navbar-expand-lg bg-blue">
     <div class="col-2 offset-1">
@@ -23,6 +23,6 @@
         </ul>
     </div>
     <div class="col-lg-1">
-        <button type="button" class="btn btn-outline-orange border-3 text-25" @onclick="@(() => UriHelper.NavigateTo("/signin"))">Log In</button>
+        <button type="button" class="btn btn-outline-orange border-3 text-25" @onclick="@(() => navigationManager.NavigateTo("/signin"))">Log In</button>
     </div>
 </nav>

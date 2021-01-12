@@ -1,8 +1,8 @@
-﻿@using Alpacko.Client.Web.Models;
-
-@page "/RegisterPackage"
-<MainNavbar></MainNavbar>
+﻿@page "/registerpackage"
 @inject HttpClient Http
+@using Alpacko.Client.Web.Models;
+
+<MainNavbar></MainNavbar>
 <style id="applicationStylesheet" type="text/css">
     .validationmessage{
         position:absolute;
@@ -153,6 +153,7 @@
         padding-left:1rem;
     }
 </style>
+
 <div id="Web_1920__1" style="transform-origin: 0px 0px;">
     <svg class="container1">
         <rect id="container1" width="945" height="455">
@@ -181,19 +182,7 @@
     </div>
     <button form="packageidForm" id="button" type="submit">Register</button>
 </div>
-@*<EditForm Model="@signInModel">
-    <DataAnnotationsValidator />
 
-    <div class="form-group">
-        <label class="label">E-mail</label>
-        <InputText id="email" class="form-control" type="email" @bind-Value="@signInModel.Email"></InputText>
-        <ValidationMessage For="@(() => @signInModel.Email)" />
-    </div>
-    <div class="form-group">
-        <label class="label">Password</label>
-        <InputText id="password" class="form-control" type="password" @bind-Value="@signInModel.Password"></InputText>
-        <ValidationMessage For="@(() => @signInModel.Password)" />
-    </div>*@
-    @code {
-        private RegisterPackageModel packageModel = new RegisterPackageModel();
-    }
+@code {
+    private RegisterPackageModel packageModel = new RegisterPackageModel();
+}
