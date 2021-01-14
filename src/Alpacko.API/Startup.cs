@@ -1,14 +1,8 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using Alpacko.API.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -28,6 +22,7 @@ namespace Alpacko.API
         {
             string connection = Configuration.GetConnectionString("Alpacko.Database");
             services.AddDbContextPool<AlpackoDatabaseContext>(options => options.UseSqlServer(connection));
+
             services.AddControllers();
         }
 
