@@ -1,6 +1,7 @@
 ﻿@page "/handin"
-@inject NavigationManager UriHelper
+@inject NavigationManager navigationManager
 @using Alpacko.Client.Web.Models;
+
 <MainNavbar />
 <div class="container-fluid mt-3">
     <ul class="nav nav-pills justify-content-center">
@@ -38,9 +39,7 @@
                     <div id="text-map-box" class="d-inline-flex">
                         <div id="nearest-sub-postoffice-txt">
                             <p style="font-size:25px;">
-                                You can now hand in the package
-                                to the nearest sub-postoffice.
-                                Your nearest sub-postoffice is here:
+                                You can now hand in the package to the nearest sub-postoffice. Your nearest sub-postoffice is here:
                             </p>
                         </div>
                         <div style="background-color: #7E7D7D">
@@ -106,7 +105,7 @@
                         </div>
                     </div>
                     <div id="btn-box">
-                        <button class=" next-btn rounded" @onclick="@(() => UriHelper.NavigateTo("#"))">Home</button>
+                        <button class=" next-btn rounded" @onclick="@(() => navigationManager.NavigateTo("#"))">Home</button>
                     </div>
                 </div>
             </div>

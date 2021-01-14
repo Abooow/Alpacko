@@ -1,5 +1,6 @@
 ﻿@page "/address"
 @using Alpacko.Client.Web.Models;
+
 <MainNavbar />
 <div class="container-fluid mt-3">
     <ul class="nav nav-pills justify-content-center">
@@ -22,7 +23,7 @@
 </div>
 <div class="row">
     <EditForm id="address-form" class="d-inline-flex" Model="@addressModel">
-        <div class="p-2 col ml-500px">
+        <div class="p-2 col ml-250px">
             <p id="indication">* indicates a required field</p>
             <DataAnnotationsValidator />
             <div id="form-group-left" class="form-group">
@@ -197,7 +198,5 @@
 @code {
 
     private AddressModel addressModel = new AddressModel();
-    private SenderModel senderModel = new SenderModel();
-    private ReceiverModel receiverModel = new ReceiverModel();
     private PackageInfoModel packageInfoModel = new PackageInfoModel();
 }

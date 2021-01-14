@@ -1,9 +1,14 @@
-﻿
-
-@page "/RegisterPackage"
-
+﻿@page "/registerpackage"
 @inject HttpClient Http
+@using Alpacko.Client.Web.Models;
+
+<MainNavbar></MainNavbar>
 <style id="applicationStylesheet" type="text/css">
+    .validationmessage{
+        position:absolute;
+        left:555px;
+        top:358px;
+    }
     .mediaViewInfo {
         --web-view-name: Web 1920 – 1;
         --web-view-id: Web_1920__1;
@@ -34,7 +39,7 @@
         --web-enable-deep-linking: true;
     }
 
-    #Rectangle_324 {
+    #container1 {
         fill: rgba(204,204,204,1);
         stroke: rgba(112,112,112,1);
         stroke-width: 1px;
@@ -44,7 +49,7 @@
         shape-rendering: auto;
     }
 
-    .Rectangle_324 {
+    .container1 {
         position: absolute;
         overflow: visible;
         width: 944px;
@@ -68,7 +73,7 @@
         color: rgba(0,0,0,1);
     }
 
-    #Rectangle_325 {
+    #container2 {
         fill: rgba(255,255,255,1);
         stroke: rgba(112,112,112,1);
         stroke-width: 1px;
@@ -78,7 +83,7 @@
         shape-rendering: auto;
     }
 
-    .Rectangle_325 {
+    .container2 {
         position: absolute;
         overflow: visible;
         width: 849px;
@@ -87,7 +92,7 @@
         top: 219px;
     }
 
-    #Rectangle_194 {
+    #container3 {
         fill: rgba(255,255,255,1);
         stroke: rgba(0,0,0,1);
         stroke-width: 1px;
@@ -97,7 +102,7 @@
         shape-rendering: auto;
     }
 
-    .Rectangle_194 {
+    .container3 {
         position: absolute;
         overflow: visible;
         width: 779px;
@@ -121,42 +126,8 @@
         color: rgba(55,58,60,1);
     }
 
-    #Package_ID {
-        left: 581px;
-        top: 306px;
-        position: absolute;
-        overflow: visible;
-        width: 130px;
-        white-space: nowrap;
-        text-align: left;
-        font-family: Helvetica Neue;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 25px;
-        color: rgba(129,138,145,1);
-    }
-
-    #Rectangle_201 {
-        fill: rgba(235,146,54,1);
-        stroke: rgba(0,0,0,1);
-        stroke-width: 1px;
-        stroke-linejoin: miter;
-        stroke-linecap: butt;
-        stroke-miterlimit: 4;
-        shape-rendering: auto;
-    }
-
-    .Rectangle_201 {
-        position: absolute;
-        overflow: visible;
-        width: 172px;
-        height: 48px;
-        left: 1162px;
-        top: 459px;
-    }
 
     #button {
-        background-color: rgba(235,146,54,1);
         position: absolute;
         overflow: visible;
         width: 172px;
@@ -167,7 +138,8 @@
         font-style: normal;
         font-weight: normal;
         font-size: 30px;
-        color: rgba(255,255,255,1);
+        background: #28A5CD;
+        color: white;
     }
 
     #packageid {
@@ -178,36 +150,39 @@
         top: 291px;
         font-family: Helvetica Neue;
         font-size: 25px;
+        padding-left:1rem;
     }
 </style>
+
 <div id="Web_1920__1" style="transform-origin: 0px 0px;">
-    <svg class="Rectangle_324">
-        <rect id="Rectangle_324" rx="0" ry="0" x="0" y="0" width="944" height="456">
+    <svg class="container1">
+        <rect id="container1" width="945" height="455">
         </rect>
     </svg>
     <div id="Register_Package">
         <span>Register Package</span>
     </div>
-    <svg class="Rectangle_325">
-        <rect id="Rectangle_325" rx="0" ry="0" x="0" y="0" width="849" height="321">
+    <svg class="container2">
+        <rect id="container2" width="850" height="320">
         </rect>
     </svg>
-    <svg class="Rectangle_194">
-        <rect id="Rectangle_194" rx="4" ry="4" x="0" y="0" width="779" height="58">
+    <svg class="container3">
+        <rect id="container3" rx="4" ry="4" x="0" y="0" width="780" height="60">
         </rect>
     </svg>
-    <input type="text" id="packageid" name="fname" placeholder="Package ID"><br><br>
+    <EditForm Model="@packageModel" id="packageidForm">
+        <DataAnnotationsValidator />
+        <input type="text" id="packageid" name="fname" placeholder="Package ID" @bind-value="@packageModel.PackageID"><br><br>
+      <div class="validationmessage">
+        <ValidationMessage  For="@(() => packageModel.PackageID)" />
+      </div>
+    </EditForm>
     <div id="Enter_Package_ID">
         <span>Enter Package ID</span>
     </div>
-    <svg class="Rectangle_201">
-        <rect id="Rectangle_201" rx="4" ry="4" x="0" y="0" width="172" height="48">
-        </rect>
-
-    </svg>
-    <button id="button" type="button">Register</button>
+    <button form="packageidForm" id="button" type="submit">Register</button>
 </div>
 
 @code {
-
+    private RegisterPackageModel packageModel = new RegisterPackageModel();
 }
