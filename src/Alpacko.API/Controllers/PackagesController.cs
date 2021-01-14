@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Alpacko.API.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Alpacko.API.Controllers
 {

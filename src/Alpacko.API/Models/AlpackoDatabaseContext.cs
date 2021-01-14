@@ -219,11 +219,11 @@ namespace Alpacko.API.Models
 
                 entity.Property(e => e.Password)
                     .IsRequired()
-                    .HasMaxLength(100);
+                    .HasMaxLength(64);
 
                 entity.Property(e => e.Salt)
                     .IsRequired()
-                    .HasMaxLength(50);
+                    .HasMaxLength(64);
 
                 entity.HasOne(d => d.PostOffice)
                     .WithMany(p => p.User)
