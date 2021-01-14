@@ -45,6 +45,7 @@ namespace Alpacko.API.Controllers
 
         private async Task<User> AuthenticateUser(string email, string password)
         {
+            email = email.ToLower().Trim();
             User user = await _context.User.FirstOrDefaultAsync(u => u.Email == email);
 
             if (user is null)
