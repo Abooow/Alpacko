@@ -1,19 +1,9 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
-
-// Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
-// If you have enabled NRTs for your project, then un-comment the following line:
-// #nullable disable
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace Alpacko.API.Models
 {
     public partial class AlpackoDatabaseContext : DbContext
     {
-        public AlpackoDatabaseContext()
-        {
-        }
-
         public AlpackoDatabaseContext(DbContextOptions<AlpackoDatabaseContext> options)
             : base(options)
         {
@@ -38,6 +28,10 @@ namespace Alpacko.API.Models
         {
             modelBuilder.Entity<Package>(entity =>
             {
+                entity.Property(e => e.Id)
+                    .HasMaxLength(10)
+                    .IsUnicode(false);
+
                 entity.Property(e => e.CreatedDate).HasDefaultValueSql("(getutcdate())");
 
                 entity.HasOne(d => d.PackageDetail)
@@ -134,6 +128,11 @@ namespace Alpacko.API.Models
                     .IsRequired()
                     .HasMaxLength(50)
                     .IsUnicode(false);
+
+                entity.Property(e => e.Name)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
             });
 
             modelBuilder.Entity<PostOffice>(entity =>
@@ -163,6 +162,11 @@ namespace Alpacko.API.Models
 
             modelBuilder.Entity<RegisteredPackage>(entity =>
             {
+                entity.Property(e => e.PackageId)
+                    .IsRequired()
+                    .HasMaxLength(10)
+                    .IsUnicode(false);
+
                 entity.HasOne(d => d.Package)
                     .WithMany(p => p.RegisteredPackage)
                     .HasForeignKey(d => d.PackageId)
@@ -179,6 +183,11 @@ namespace Alpacko.API.Models
             modelBuilder.Entity<SentPackage>(entity =>
             {
                 entity.Property(e => e.CreatedDate).HasDefaultValueSql("(getutcdate())");
+
+                entity.Property(e => e.PackageId)
+                    .IsRequired()
+                    .HasMaxLength(10)
+                    .IsUnicode(false);
 
                 entity.HasOne(d => d.Package)
                     .WithMany(p => p.SentPackage)
