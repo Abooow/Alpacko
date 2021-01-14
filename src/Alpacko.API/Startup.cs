@@ -9,7 +9,8 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using Alpacko.API.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Alpacko.API
 {
@@ -25,6 +26,8 @@ namespace Alpacko.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            string connection = Configuration.GetConnectionString("Alpacko.Database");
+            services.AddDbContextPool<AlpackoDatabaseContext>(options => options.UseSqlServer(connection));
             services.AddControllers();
         }
 
