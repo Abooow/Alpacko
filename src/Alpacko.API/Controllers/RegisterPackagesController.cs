@@ -84,18 +84,18 @@ namespace Alpacko.API.Controllers
         {
             RegisteredPackage alreadyRegisteredPackage = await _context.RegisteredPackage.FirstOrDefaultAsync(rp => rp.PackageId == registeredPackage.PackageId);
 
+            int id = User.GetLoggedInUserId<int>();
+            User user = await _context.User.FirstOrDefaultAsync(u => u.Id == id);
+
+            if (user.PostOfficeId is null)
+                return BadRequest(new Alpacko::RegisteredPackageResult { Successful = false, ErrorMessage = "This user is not connected to a post office." });
+            
             if (alreadyRegisteredPackage != null)
                 return BadRequest(new Alpacko::RegisteredPackageResult { Successful = false, ErrorMessage = "This package is already registered." });
 
             Package foundPackage = await _context.Package.FirstOrDefaultAsync(p => p.Id == registeredPackage.PackageId);
             if (foundPackage is null)
                 return BadRequest(new Alpacko::RegisteredPackageResult { Successful = false, ErrorMessage = "Package ID does not exists." });
-
-            int id = User.GetLoggedInUserId<int>();
-            User user = await _context.User.FirstOrDefaultAsync(u => u.Id == id);
-            
-            if (user.PostOfficeId is null)
-                return BadRequest(new Alpacko::RegisteredPackageResult { Successful = false, ErrorMessage = "This user is not connected to a post office." });
 
             registeredPackage.PostOfficeId = user.PostOfficeId.Value;
 
