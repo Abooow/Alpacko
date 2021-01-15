@@ -10,70 +10,70 @@
 <br />
 <br />
 <div class="form">
-	<h2 class="title">Sign In</h2>
-	<EditForm Model="@signInModel" OnValidSubmit="HandleSignIn">
-		<DataAnnotationsValidator />
-		<div class="form-group">
-			<label class="label">E-mail</label>
-			<InputText id="email" class="form-control" type="email" @bind-Value="@signInModel.Email"></InputText>
-			<ValidationMessage For="@(() => @signInModel.Email)" />
-		</div>
-		<div class="form-group">
-			<label class="label">Password</label>
-			<InputText id="password" class="form-control" type="password" @bind-Value="@signInModel.Password"></InputText>
-			<ValidationMessage For="@(() => @signInModel.Password)" />
-		</div>
-		<div class="form-group">
-			<div class="d-flex justify-content-between">
-				<div class="form-check">
-					<input type="checkbox" class="form-check-input" @bind-value="@signInModel.StaySignedIn">
-					<label class="label">Stay logged in</label>
-				</div>
-				<a href="/account/forgotpassword">Forgot password?</a>
-			</div>
-		</div>
-		<div class="field" style="margin-bottom: 1em;">
-			<div class="control">
-				<button type="submit" class="sign-in-btn rounded">Sign in</button>
-			</div>
-		</div>
+    <h2 class="title">Sign In</h2>
+    <EditForm Model="@signInModel" OnValidSubmit="HandleSignIn">
+        <DataAnnotationsValidator />
+        <div class="form-group">
+            <label class="label">E-mail</label>
+            <InputText id="email" class="form-control" type="email" @bind-Value="@signInModel.Email"></InputText>
+            <ValidationMessage For="@(() => @signInModel.Email)" />
+        </div>
+        <div class="form-group">
+            <label class="label">Password</label>
+            <InputText id="password" class="form-control" type="password" @bind-Value="@signInModel.Password"></InputText>
+            <ValidationMessage For="@(() => @signInModel.Password)" />
+        </div>
+        <div class="form-group">
+            <div class="d-flex justify-content-between">
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" @bind-value="@signInModel.StaySignedIn">
+                    <label class="label">Stay logged in</label>
+                </div>
+                <a href="/account/forgotpassword">Forgot password?</a>
+            </div>
+        </div>
+        <div class="field" style="margin-bottom: 1em;">
+            <div class="control">
+                <button type="submit" class="sign-in-btn rounded">Sign in</button>
+            </div>
+        </div>
 
-		@if (showErrors)
-		{
-			<div class="alert alert-danger">
-				@errorMessage
-			</div>
-		}
+        @if (showErrors)
+        {
+            <div class="alert alert-danger">
+                @errorMessage
+            </div>
+        }
 
-		<div class="text-center">
-			<p>Dont you have an account <a href="/signup">Sign up</a></p>
-		</div>
-	</EditForm>
+        <div class="text-center">
+            <p>Don't you have an account <a href="/signup">Sign up</a></p>
+        </div>
+    </EditForm>
 </div>
 
 @code {
-	private SignInModel signInModel = new SignInModel();
-	private bool showErrors;
-	private string errorMessage = "";
+    private SignInModel signInModel = new SignInModel();
+    private bool showErrors;
+    private string errorMessage = "";
 
-	private async Task HandleSignIn()
-	{
-		var result = await AuthService.SignIn(signInModel);
+    private async Task HandleSignIn()
+    {
+        var result = await AuthService.SignIn(signInModel);
 
-		if (result.Successful)
-		{
-			showErrors = false;
+        if (result.Successful)
+        {
+            showErrors = false;
 
-			Uri uri = NavigationManager.ToAbsoluteUri(HttpUtility.UrlDecode(NavigationManager.Uri));
-			if (QueryHelpers.ParseQuery(uri.Query).TryGetValue("returnUrl", out var returnUrl))
-				NavigationManager.NavigateTo(returnUrl);
-			else
-				NavigationManager.NavigateTo("/address");
-		}
-		else
-		{
-			showErrors = true;
-			errorMessage = result.ErrorMessage;
-		}
-	}
+            Uri uri = NavigationManager.ToAbsoluteUri(HttpUtility.UrlDecode(NavigationManager.Uri));
+            if (QueryHelpers.ParseQuery(uri.Query).TryGetValue("returnUrl", out var returnUrl))
+                NavigationManager.NavigateTo(returnUrl);
+            else
+                NavigationManager.NavigateTo("/address");
+        }
+        else
+        {
+            showErrors = true;
+            errorMessage = result.ErrorMessage;
+        }
+    }
 }

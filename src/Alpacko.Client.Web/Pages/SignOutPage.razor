@@ -5,10 +5,10 @@
 <h3>Signing out...</h3>
 
 @code {
-	protected override async Task OnInitializedAsync()
-	{
-		await AuthService.SignOut();
+    protected override async Task OnInitializedAsync()
+    {
+        await AuthService.SignOut();
 
-		NavigationManager.NavigateTo("#", true);
-	}
+        NavigationManager.NavigateTo("#");
+    }
 }
