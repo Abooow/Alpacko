@@ -21,21 +21,12 @@ namespace Alpacko.Client.Web
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("app");
 
-            //builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://localhost:44396/") });
-            builder.Services.AddTransient(sp => new HttpClient(new DefaultBrowserOptionsMessageHandler(new WebAssemblyHttpHandler())
-            {
-                DefaultBrowserRequestCache = BrowserRequestCache.NoCache,
-                DefaultBrowserRequestCredentials = BrowserRequestCredentials.Omit,
-                DefaultBrowserRequestMode = BrowserRequestMode.Cors,
-            })
-            {
-                BaseAddress = new Uri("https://localhost:44396/"),
-            });
-
+            builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://localhost:44396/") });
             builder.Services.AddBlazoredLocalStorage();
             builder.Services.AddAuthorizationCore();
             builder.Services.AddScoped<AuthenticationStateProvider, ApiAuthenticationStateProvider>();
             builder.Services.AddScoped<IAuthService, AuthService>();
+
 
             await builder.Build().RunAsync();
         }

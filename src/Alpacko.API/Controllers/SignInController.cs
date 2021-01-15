@@ -39,7 +39,7 @@ namespace Alpacko.API.Controllers
 
             string token = await GenerateJSONWebToken(authenticatedUser);
 
-            return Ok(new SignInResultModel { Successful = true, Token = token });
+            return Ok(new SignInResultModel { Successful = true, Token = token, ErrorMessage = "" });
         }
 
 
@@ -63,11 +63,13 @@ namespace Alpacko.API.Controllers
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
+            IdentityOptions _options = new IdentityOptions();
             string userRole = await GetUserRoleAsync(user.Id);
             var claims = new[]
             {
-                new Claim(JwtRegisteredClaimNames.NameId, user.Id.ToString()),
-                new Claim(JwtRegisteredClaimNames.Email, user.Email),
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                new Claim(ClaimTypes.Email, user.Email),
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 new Claim(ClaimTypes.Role, userRole)
             };
 

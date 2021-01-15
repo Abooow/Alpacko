@@ -38,8 +38,9 @@ namespace Alpacko.Client.Web
 
         public void MarkUserAsAuthenticated(string token)
         {
-            ClaimsPrincipal authenticatedUser = new ClaimsPrincipal(new ClaimsIdentity(new ClaimsIdentity(ParseClaimsFromJwt(token), "apiauth")));
-            Task<AuthenticationState> authState = Task.FromResult(new AuthenticationState(authenticatedUser));
+            var authenticatedUser = new ClaimsPrincipal(new ClaimsIdentity(ParseClaimsFromJwt(token), "jwt"));
+            var authState = Task.FromResult(new AuthenticationState(authenticatedUser));
+
             NotifyAuthenticationStateChanged(authState);
         }
 

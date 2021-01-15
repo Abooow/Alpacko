@@ -29,10 +29,8 @@ namespace Alpacko.Client.Web.Services
 
         public async Task<SignInResultModel> SignIn(SignInModel signInModel)
         {
-            // string signInAsJson = JsonSerializer.Serialize(signInModel); 
-            // HttpResponseMessage response = await _httpClient.PostAsync("api/signin", new StringContent(signInAsJson, Encoding.UTF8, "application/json"));
-            HttpResponseMessage response = await _httpClient.PostAsJsonAsync("api/signin", signInModel);
-            
+            var response = await _httpClient.PostAsync("api/signin", JsonContent.Create<SignInModel>(signInModel));
+
             SignInResultModel loginResult = JsonSerializer.Deserialize<SignInResultModel>(await response.Content.ReadAsStringAsync(), new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
 
             if (!response.IsSuccessStatusCode)
@@ -41,7 +39,7 @@ namespace Alpacko.Client.Web.Services
             if (signInModel.StaySignedIn)
                 await _localStorage.SetItemAsync("authToken", loginResult.Token);
 
-            ((ApiAuthenticationStateProvider)_authenticationStateProvider).MarkUserAsAuthenticated(signInModel.Email);
+            ((ApiAuthenticationStateProvider)_authenticationStateProvider).MarkUserAsAuthenticated(loginResult.Token);
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", loginResult.Token);
 
             return loginResult;
