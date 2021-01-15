@@ -1,3 +1,5 @@
+![Logo](images/logo-name.png)
+___
 # Alpacko usage GUIDE
 
 The first-time user have to setup a database in order to be able to run this application
