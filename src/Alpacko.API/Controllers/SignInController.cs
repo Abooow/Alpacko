@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Alpacko.API.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -10,8 +12,6 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
-using Alpacko.API.Models;
-using Microsoft.EntityFrameworkCore;
 
 namespace Alpacko.API.Controllers
 {
@@ -42,7 +42,6 @@ namespace Alpacko.API.Controllers
             return Ok(new SignInResultModel { Successful = true, Token = token, ErrorMessage = "" });
         }
 
-
         private async Task<User> AuthenticateUser(string email, string password)
         {
             email = email.ToLower().Trim();
@@ -60,12 +59,12 @@ namespace Alpacko.API.Controllers
 
         private async Task<string> GenerateJSONWebToken(User user)
         {
-            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
-            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+            SymmetricSecurityKey securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
+            SigningCredentials credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
             IdentityOptions _options = new IdentityOptions();
-            string userRole = await GetUserRoleAsync(user.Id);
-            var claims = new[]
+            string userRole = await GetUserRoleAsync(user);
+            Claim[] claims = new[]
             {
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
                 new Claim(ClaimTypes.Email, user.Email),
@@ -73,20 +72,20 @@ namespace Alpacko.API.Controllers
                 new Claim(ClaimTypes.Role, userRole)
             };
 
-            var token = new JwtSecurityToken(
+            JwtSecurityToken token = new JwtSecurityToken(
                 issuer: _configuration["Jwt:Issuer"],
                 audience: _configuration["Jwt:Audience"],
                 claims,
                 expires: DateTime.Now.AddDays(Convert.ToInt32(_configuration["Jwt:ExpiryInDays"])),
                 signingCredentials: credentials);
 
-            var encodedToken = new JwtSecurityTokenHandler().WriteToken(token);
+            string encodedToken = new JwtSecurityTokenHandler().WriteToken(token);
             return encodedToken;
         }
 
-        private async Task<string> GetUserRoleAsync(int userId)
+        private async Task<string> GetUserRoleAsync(User user)
         {
-            UserRole userRole = await _context.UserRole.FirstOrDefaultAsync(role => role.Id == userId);
+            UserRole userRole = await _context.UserRole.FirstOrDefaultAsync(role => role.Id == user.UserRoleId);
             return userRole.Name;
         }
     }
