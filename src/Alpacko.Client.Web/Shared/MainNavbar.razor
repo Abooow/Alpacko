@@ -6,7 +6,7 @@
             <img src="/images/logo/logo-name-simple.svg" width="224" height="58" alt="">
         </NavLink>
     </div>
-    <div class="col-4 offset-3">
+    <div class="col-3 offset-3">
         <ul class="navbar-nav justify-content-between">
             <li class="nav-item">
                 <NavLink class="nav-link text-white text-25 text-orange-hover" href="#">Home</NavLink>
@@ -22,7 +22,8 @@
             </li>
         </ul>
     </div>
-    <div class="col-lg-1">
-        <button type="button" class="btn btn-outline-orange border-3 text-25" @onclick="@(() => navigationManager.NavigateTo("/signin"))">Log In</button>
+    <div class="ml-5 d-inline-flex">
+        <button type="button" class="btn btn-outline-orange border-3 text-25 mr-5" @onclick="@(() => navigationManager.NavigateTo("/signin"))">Sign In</button>
+        <button type="button" class="btn btn-orange border-3 text-25" @onclick="@(() => navigationManager.NavigateTo("/signup"))">Sign Up</button>
     </div>
 </nav>
