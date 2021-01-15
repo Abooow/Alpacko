@@ -1,14 +1,16 @@
 ﻿@page "/registerpackage"
 @inject HttpClient Http
 @using Alpacko.Client.Web.Models;
+@attribute [Authorize(Roles = "Admin")]
 
 <MainNavbar></MainNavbar>
 <style id="applicationStylesheet" type="text/css">
-    .validationmessage{
-        position:absolute;
-        left:555px;
-        top:358px;
+    .validationmessage {
+        position: absolute;
+        left: 555px;
+        top: 358px;
     }
+
     .mediaViewInfo {
         --web-view-name: Web 1920 – 1;
         --web-view-id: Web_1920__1;
@@ -150,7 +152,7 @@
         top: 291px;
         font-family: Helvetica Neue;
         font-size: 25px;
-        padding-left:1rem;
+        padding-left: 1rem;
     }
 </style>
 
@@ -173,9 +175,9 @@
     <EditForm Model="@packageModel" id="packageidForm">
         <DataAnnotationsValidator />
         <input type="text" id="packageid" name="fname" placeholder="Package ID" @bind-value="@packageModel.PackageID"><br><br>
-      <div class="validationmessage">
-        <ValidationMessage  For="@(() => packageModel.PackageID)" />
-      </div>
+        <div class="validationmessage">
+            <ValidationMessage For="@(() => packageModel.PackageID)" />
+        </div>
     </EditForm>
     <div id="Enter_Package_ID">
         <span>Enter Package ID</span>
