@@ -38,7 +38,7 @@ namespace Alpacko.API.Controllers
             int nPackagesNotRegistered = _context.Package.Count(package => _context.RegisteredPackage.FirstOrDefault(x => x.PackageId == package.Id) != null);
             if (_context.Package.Count() == 0 || nPackagesNotRegistered < 10)
             {
-                for (int i = 0; i < nPackagesNotRegistered - 10; i++)
+                for (int i = 0; i < 10 - nPackagesNotRegistered; i++)
                 {
                     await CreatePackage(packageSenderId, packageRecipientId, packageDetailId);
                 }

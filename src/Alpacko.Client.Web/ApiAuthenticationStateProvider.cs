@@ -24,7 +24,10 @@ namespace Alpacko.Client.Web
 
         public override async Task<AuthenticationState> GetAuthenticationStateAsync()
         {
-            var savedToken = await _localStorage.GetItemAsync<string>("authToken");
+            // Create dummy data in database.
+            await _httpClient.GetAsync("api/dummydata");
+            
+            string savedToken = await _localStorage.GetItemAsync<string>("authToken");
 
             if (string.IsNullOrWhiteSpace(savedToken))
             {
@@ -32,9 +35,6 @@ namespace Alpacko.Client.Web
             }
 
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", savedToken);
-
-            // Create dummy data in database.
-            await _httpClient.GetAsync("api/dummydata");
 
             return new AuthenticationState(new ClaimsPrincipal(new ClaimsIdentity(ParseClaimsFromJwt(savedToken), "jwt")));
         }
