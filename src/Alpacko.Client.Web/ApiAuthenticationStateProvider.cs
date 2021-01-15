@@ -33,6 +33,9 @@ namespace Alpacko.Client.Web
 
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", savedToken);
 
+            // Create dummy data in database.
+            await _httpClient.GetAsync("api/dummydata");
+
             return new AuthenticationState(new ClaimsPrincipal(new ClaimsIdentity(ParseClaimsFromJwt(savedToken), "jwt")));
         }
 
