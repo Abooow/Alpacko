@@ -54,8 +54,9 @@ namespace Alpacko.Client.Web.Services
 
         public async Task<SignUpResultModel> SignUp(SignUpModel signUpModel)
 {
-            HttpResponseMessage result = await _httpClient.PostAsJsonAsync("api/accounts", signUpModel);
-            SignUpResultModel signUpResult = await result.Content.ReadFromJsonAsync<SignUpResultModel>();
+            HttpResponseMessage response = await _httpClient.PostAsJsonAsync("api/signup", signUpModel);
+            SignUpResultModel signUpResult = JsonSerializer.Deserialize<SignUpResultModel>(await response.Content.ReadAsStringAsync(), new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+            //SignUpResultModel signUpResult = await result.Content.ReadFromJsonAsync<SignUpResultModel>();
 
             return signUpResult;
         }
