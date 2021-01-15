@@ -8,6 +8,6 @@ namespace Alpacko.Client.Web.Models
     public class SignUpResultModel
     {
         public bool Successful { get; set; }
-        public IEnumerable<string> Errors { get; set; }
+        public string ErrorMessage { get; set; }
     }
 }
