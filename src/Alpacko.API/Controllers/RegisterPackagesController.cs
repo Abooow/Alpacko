@@ -13,11 +13,12 @@ namespace Alpacko.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class RegisteredPackagesController : ControllerBase
+    [Authorize(Roles = "Admin")]
+    public class RegisterPackagesController : ControllerBase
     {
         private readonly AlpackoDatabaseContext _context;
 
-        public RegisteredPackagesController(AlpackoDatabaseContext context)
+        public RegisterPackagesController(AlpackoDatabaseContext context)
         {
             _context = context;
         }
@@ -79,19 +80,29 @@ namespace Alpacko.API.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<RegisteredPackage>> PostRegisteredPackage(RegisteredPackage registeredPackage)
         {
-            int id = User.GetLoggedInUserId<int>();
             RegisteredPackage alreadyRegisteredPackage = await _context.RegisteredPackage.FirstOrDefaultAsync(rp => rp.PackageId == registeredPackage.PackageId);
 
             if (alreadyRegisteredPackage != null)
                 return BadRequest(new Alpacko::RegisteredPackageResult { Successful = false, ErrorMessage = "This package is already registered." });
 
+            Package foundPackage = await _context.Package.FirstOrDefaultAsync(p => p.Id == registeredPackage.PackageId);
+            if (foundPackage is null)
+                return BadRequest(new Alpacko::RegisteredPackageResult { Successful = false, ErrorMessage = "Package ID does not exists." });
+
+            int id = User.GetLoggedInUserId<int>();
+            User user = await _context.User.FirstOrDefaultAsync(u => u.Id == id);
+            
+            if (user.PostOfficeId is null)
+                return BadRequest(new Alpacko::RegisteredPackageResult { Successful = false, ErrorMessage = "This user is not connected to a post office." });
+
+            registeredPackage.PostOfficeId = user.PostOfficeId.Value;
+
             _context.RegisteredPackage.Add(registeredPackage);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetRegisteredPackage", new { id = registeredPackage.Id }, new Alpacko::RegisteredPackageResult { Successful = true });
+            return CreatedAtAction("GetRegisteredPackage", new { id = registeredPackage.Id }, new Alpacko::RegisteredPackageResult { Successful = true, ErrorMessage = "" });
         }
 
         //// DELETE: api/RegisteredPackages/5
@@ -110,9 +121,9 @@ namespace Alpacko.API.Controllers
         //    return registeredPackage;
         //}
 
-        private bool RegisteredPackageExists(int id)
-        {
-            return _context.RegisteredPackage.Any(e => e.Id == id);
-        }
+        //private bool RegisteredPackageExists(int id)
+        //{
+        //    return _context.RegisteredPackage.Any(e => e.Id == id);
+        //}
     }
 }
