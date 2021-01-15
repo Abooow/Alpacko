@@ -12,6 +12,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using Alpacko = Alpacko.API.Models.Results;
 
 namespace Alpacko.API.Controllers
 {
@@ -35,11 +36,11 @@ namespace Alpacko.API.Controllers
             User authenticatedUser = await AuthenticateUser(login.Email, login.Password);
 
             if (authenticatedUser is null)
-                return BadRequest(new SignInResultModel { Successful = false, ErrorMessage = "Email or password are invalid." });
+                return BadRequest(new Alpacko::SignInResult { Successful = false, ErrorMessage = "Email or password are invalid." });
 
             string token = await GenerateJSONWebToken(authenticatedUser);
 
-            return Ok(new SignInResultModel { Successful = true, Token = token, ErrorMessage = "" });
+            return Ok(new Alpacko::SignInResult { Successful = true, Token = token, ErrorMessage = "" });
         }
 
         private async Task<User> AuthenticateUser(string email, string password)

@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Alpacko.API.Models
+namespace Alpacko.API.Models.Results
 {
-    public class SignInResultModel
+    public class RegisteredPackageResult
     {
         public bool Successful { get; set; }
         public string ErrorMessage { get; set; }
-        public string Token { get; set; }
     }
 }
