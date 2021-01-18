@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Net.Http.Json;
 using System.Text.Json;
 using System.Threading.Tasks;
 
@@ -34,6 +35,14 @@ namespace Alpacko.Client.AdminConsole.Controllers
 
             PostOfficeModel postOffice = JsonSerializer.Deserialize<PostOfficeModel>(await response.Content.ReadAsStringAsync(), new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
             return postOffice;
+        }
+
+        public async void SavePostOffice(PostOfficeModel postOffice)
+        {
+            HttpResponseMessage response = await httpClient.PostAsync($"api/postoffices", JsonContent.Create(postOffice));
+
+            if (!response.IsSuccessStatusCode)
+                throw new Exception(response.ReasonPhrase);
         }
     }
 }

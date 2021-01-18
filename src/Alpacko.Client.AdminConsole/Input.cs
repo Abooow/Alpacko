@@ -79,6 +79,17 @@ namespace Alpacko.Client.AdminConsole
             }
         }
 
+        internal static bool GetYesOrNoInput()
+        {
+            string input;
+            do
+            {
+                input = Console.ReadLine().Trim().ToLower();
+            } while (input != "y" && input != "n");
+
+            return input == "y";
+        }
+
         public static string GetText()
         {
             StringBuilder builder = new StringBuilder();
@@ -120,6 +131,12 @@ namespace Alpacko.Client.AdminConsole
                     }
                 }
             }
+        }
+
+        public static void PressAnyKeyToContinue()
+        {
+            Console.WriteLine("Press a key to continue...");
+            Console.ReadKey(true);
         }
     }
 }

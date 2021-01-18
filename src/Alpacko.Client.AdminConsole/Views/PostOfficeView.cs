@@ -1,5 +1,6 @@
 ﻿using Alpacko.Client.AdminConsole.Controllers;
 using Alpacko.Client.AdminConsole.Models;
+using Alpacko.Client.AdminConsole.Validation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,10 +42,40 @@ namespace Alpacko.Client.AdminConsole.Views
                         GetPostOfficeById();
                         break;
 
+                    case "4":
+                        CreatePostOffice();
+                        break;
+
                     case "back":
                         return;
                 }
             }
+        }
+
+        private void CreatePostOffice()
+        {
+            Console.Clear();
+            Console.WriteLine("~~ Create Post Office ~~");
+            PostOfficeModel postOffice = Validate.GetValidInstance<PostOfficeModel>();
+            Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~");
+
+            Console.Clear();
+            Console.WriteLine("~~ Create Post Office ~~");
+            ModelPrinter.PrintWithSkip(postOffice);
+            Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~");
+
+            Console.WriteLine();
+            Console.WriteLine("Are you sure you want to save this Post Office? y/n");
+            bool save = Input.GetYesOrNoInput();
+
+            if (save)
+            {
+                postOfficeController.SavePostOffice(postOffice);
+                Console.WriteLine("Post office successfully saved");
+            }
+
+            Console.WriteLine();
+            Input.PressAnyKeyToContinue();
         }
 
         private void GetPostOfficeById()
@@ -72,8 +103,7 @@ namespace Alpacko.Client.AdminConsole.Views
             }
 
             Console.WriteLine();
-            Console.WriteLine("Press a key to continue...");
-            Console.ReadKey(true);
+            Input.PressAnyKeyToContinue();
         }
 
         private void ShowAllPostOffices()
@@ -105,8 +135,7 @@ namespace Alpacko.Client.AdminConsole.Views
                     break;
             }
 
-            Console.WriteLine("Press a key to continue...");
-            Console.ReadKey(true);
+            Input.PressAnyKeyToContinue();
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using Alpacko.Client.AdminConsole.Models;
 using Alpacko.Client.AdminConsole.Services;
+using Alpacko.Client.AdminConsole.Validation;
 using System;
-using System.Collections.Generic;
 
 namespace Alpacko.Client.AdminConsole.Views
 {
@@ -30,15 +30,16 @@ namespace Alpacko.Client.AdminConsole.Views
                 }
 
                 Console.WriteLine("~~~~~~~~ Sign In ~~~~~~~");
-                Console.Write("Email: ");
-                string email = Input.GetText();
-                Console.Write("Password: ");
-                string password = Input.GetPasswordAsStar();
+                SignInModel signInModel = Validate.GetValidInstance<SignInModel>();
+                //Console.Write("Email: ");
+                //string email = Input.GetText();
+                //Console.Write("Password: ");
+                //string password = Input.GetPasswordAsStar();
                 Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~");
 
                 Console.WriteLine("Signing in...");
 
-                SignInModel signInModel = new SignInModel() { Email = email.Trim().ToLower(), Password = password };
+                //SignInModel signInModel = new SignInModel() { Email = email.Trim().ToLower(), Password = password };
                 signInResult = authService.SignIn(signInModel).GetAwaiter().GetResult();
                 errorMessage = signInResult.ErrorMessage;
                 Console.WriteLine();
@@ -50,8 +51,7 @@ namespace Alpacko.Client.AdminConsole.Views
             if (signInResult.Successful)
                 Utils.WriteLineInColor("Successfully signed in!", Utils.SuccessColor);
 
-            Console.WriteLine("Press a key to continue...");
-            Console.ReadKey(true);
+            Input.PressAnyKeyToContinue();
         }
     }
 }
