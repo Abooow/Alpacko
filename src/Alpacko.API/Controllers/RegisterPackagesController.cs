@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Alpacko.API.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Alpacko.API.Models;
-using Microsoft.AspNetCore.Authorization;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Alpacko = Alpacko.API.Models.Results;
 
 namespace Alpacko.API.Controllers
@@ -25,16 +25,20 @@ namespace Alpacko.API.Controllers
 
         // GET: api/RegisteredPackages
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<RegisteredPackage>>> GetRegisteredPackage()
+        public async Task<ActionResult<IEnumerable<RegisteredPackage>>> GetRegisteredPackage([FromQuery] int skip, [FromQuery] int? take)
         {
-            return await _context.RegisteredPackage.ToListAsync();
+            RegisteredPackage[] registeredPackages = await _context.RegisteredPackage.Skip(skip).ToArrayAsync();
+            if (take != null && take >= 0)
+                registeredPackages = registeredPackages.Take(take.Value).ToArray();
+
+            return registeredPackages;
         }
 
         // GET: api/RegisteredPackages/5
         [HttpGet("{id}")]
         public async Task<ActionResult<RegisteredPackage>> GetRegisteredPackage(int id)
         {
-            var registeredPackage = await _context.RegisteredPackage.FindAsync(id);
+            RegisteredPackage registeredPackage = await _context.RegisteredPackage.FindAsync(id);
 
             if (registeredPackage == null)
             {
@@ -89,7 +93,7 @@ namespace Alpacko.API.Controllers
 
             if (user.PostOfficeId is null)
                 return BadRequest(new Alpacko::RegisteredPackageResult { Successful = false, ErrorMessage = "This user is not connected to a post office." });
-            
+
             if (alreadyRegisteredPackage != null)
                 return BadRequest(new Alpacko::RegisteredPackageResult { Successful = false, ErrorMessage = "This package is already registered." });
 

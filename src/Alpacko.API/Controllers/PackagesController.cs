@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Alpacko.API.Models;
 using Microsoft.AspNetCore.Authorization;
+using System.Linq;
 
 namespace Alpacko.API.Controllers
 {
@@ -21,9 +22,13 @@ namespace Alpacko.API.Controllers
 
         // GET: api/Packages
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Package>>> GetPackages()
+        public async Task<ActionResult<IEnumerable<Package>>> GetPackages([FromQuery] int skip, [FromQuery] int? take)
         {
-            return await _context.Package.ToListAsync();
+            Package[] packages = await _context.Package.Skip(skip).ToArrayAsync();
+            if (take != null && take >= 0)
+                packages = packages.Take(take.Value).ToArray();
+
+            return packages;
         }
 
         // GET: api/Packages/5

@@ -1,14 +1,14 @@
 ﻿using Alpacko.Client.Web.Models;
 using Blazored.LocalStorage;
+using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
 using System;
 using System.Net.Http;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Components;
-using System.Net.Http.Json;
-using System.Text.Json;
-using System.Text;
 using System.Net.Http.Headers;
+using System.Net.Http.Json;
+using System.Text;
+using System.Text.Json;
+using System.Threading.Tasks;
 
 namespace Alpacko.Client.Web.Services
 {
@@ -29,7 +29,7 @@ namespace Alpacko.Client.Web.Services
 
         public async Task<SignInResultModel> SignIn(SignInModel signInModel)
         {
-            var response = await _httpClient.PostAsync("api/signin", JsonContent.Create<SignInModel>(signInModel));
+            HttpResponseMessage response = await _httpClient.PostAsync("api/signin", JsonContent.Create<SignInModel>(signInModel));
 
             SignInResultModel loginResult = JsonSerializer.Deserialize<SignInResultModel>(await response.Content.ReadAsStringAsync(), new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
 
@@ -53,7 +53,7 @@ namespace Alpacko.Client.Web.Services
         }
 
         public async Task<SignUpResultModel> SignUp(SignUpModel signUpModel)
-{
+        {
             HttpResponseMessage response = await _httpClient.PostAsJsonAsync("api/signup", signUpModel);
             SignUpResultModel signUpResult = JsonSerializer.Deserialize<SignUpResultModel>(await response.Content.ReadAsStringAsync(), new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
             //SignUpResultModel signUpResult = await result.Content.ReadFromJsonAsync<SignUpResultModel>();

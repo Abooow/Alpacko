@@ -22,9 +22,13 @@ namespace Alpacko.API.Controllers
 
         // GET: api/PostOffices
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<PostOffice>>> GetPostOffice()
+        public async Task<ActionResult<IEnumerable<PostOffice>>> GetPostOffice([FromQuery] int skip, [FromQuery] int? take)
         {
-            return await _context.PostOffice.ToListAsync();
+            PostOffice[] postOffices = await _context.PostOffice.Skip(skip).ToArrayAsync();
+            if (take != null && take >= 0)
+                postOffices = postOffices.Take(take.Value).ToArray();
+
+            return postOffices;
         }
 
         // GET: api/PostOffices/5

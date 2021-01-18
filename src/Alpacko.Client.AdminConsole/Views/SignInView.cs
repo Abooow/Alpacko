@@ -1,0 +1,57 @@
+﻿using Alpacko.Client.AdminConsole.Models;
+using Alpacko.Client.AdminConsole.Services;
+using System;
+using System.Collections.Generic;
+
+namespace Alpacko.Client.AdminConsole.Views
+{
+    public class SignInView : IView
+    {
+        private AuthService authService;
+
+        public SignInView(AuthService authService)
+        {
+            this.authService = authService;
+        }
+
+        public void Render()
+        {
+            SignInResultModel signInResult = new SignInResultModel();
+            string errorMessage = null;
+
+            while (!signInResult.Successful || !authService.UserHasRole("Admin"))
+            {
+                Console.Clear();
+
+                if (errorMessage != null)
+                {
+                    Utils.WriteLineInColor(errorMessage, Utils.ErrorColor);
+                    Console.WriteLine();
+                }
+
+                Console.WriteLine("~~~~~~~~ Sign In ~~~~~~~");
+                Console.Write("Email: ");
+                string email = Input.GetText();
+                Console.Write("Password: ");
+                string password = Input.GetPasswordAsStar();
+                Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~");
+
+                Console.WriteLine("Signing in...");
+
+                SignInModel signInModel = new SignInModel() { Email = email.Trim().ToLower(), Password = password };
+                signInResult = authService.SignIn(signInModel).GetAwaiter().GetResult();
+                errorMessage = signInResult.ErrorMessage;
+                Console.WriteLine();
+
+                if (signInResult.Successful && !authService.UserHasRole("Admin"))
+                    errorMessage = "This user does not have the authorization to access this app.";
+            }
+
+            if (signInResult.Successful)
+                Utils.WriteLineInColor("Successfully signed in!", Utils.SuccessColor);
+
+            Console.WriteLine("Press a key to continue...");
+            Console.ReadKey(true);
+        }
+    }
+}
