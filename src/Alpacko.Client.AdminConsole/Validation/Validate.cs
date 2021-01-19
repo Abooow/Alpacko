@@ -13,30 +13,27 @@ namespace Alpacko.Client.AdminConsole.Validation
 
         public static bool ValidateProperty<TInstance, TValue>(TInstance obj, TValue value, string propName, out List<ValidationResult> results)
         {
+            results = new List<ValidationResult>();
+
             ValidationContext ctx = new ValidationContext(obj)
             {
                 DisplayName = propName,
                 MemberName = propName
             };
 
-            results = new List<ValidationResult>();
-
-            bool defaultValidatorSuccess = Validator.TryValidateProperty(value, ctx, results);
-            bool customValidatorSuccess = true;
-
             // Email validation.
-            MemberInfo[] s = ctx.ObjectType.FindMembers(MemberTypes.Property, BindingFlags.Instance | BindingFlags.Public, (x, _) => x.Name == propName, null);
-            if (s.Length > 0)
+            MemberInfo[] members = ctx.ObjectType.FindMembers(MemberTypes.Property, BindingFlags.Instance | BindingFlags.Public, (x, _) => x.Name == propName, null);
+            if (members.Length > 0)
             {
-                if (s[0].GetCustomAttributes(false).FirstOrDefault(x => x.GetType() == typeof(EmailAttribute)) is EmailAttribute email &&
+                if (members[0].GetCustomAttributes(false).FirstOrDefault(x => x.GetType() == typeof(EmailAddressAttribute)) is EmailAddressAttribute email &&
                     !Regex.Match((value as string).Trim(), EmailRegex).Success)
                 {
                     results.Add(new ValidationResult(email.ErrorMessage));
-                    customValidatorSuccess = false;
+                    return false;
                 }
             }
 
-            return defaultValidatorSuccess && customValidatorSuccess;
+            return Validator.TryValidateProperty(value, ctx, results);
         }
 
         public static T GetValidInstance<T>()
@@ -50,7 +47,7 @@ namespace Alpacko.Client.AdminConsole.Validation
                 if (property.CustomAttributes.Any(x => x.AttributeType == typeof(SkipAttribute)))
                     continue;
 
-                do
+                while (true)
                 {
                     Console.Write($"{property.Name}: ");
                     string rawInput = GetInput(property);
@@ -73,7 +70,7 @@ namespace Alpacko.Client.AdminConsole.Validation
                     }
 
                     break;
-                } while (true);
+                }
             }
 
             return instance;

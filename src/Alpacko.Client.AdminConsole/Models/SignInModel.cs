@@ -8,7 +8,7 @@ namespace Alpacko.Client.AdminConsole.Models
     public class SignInModel
     {
         [Required(ErrorMessage = "E-mail is required")]
-        [Email]
+        [EmailAddress(ErrorMessage = "Not a valid e-mail address")]
         [ToLower, Trim]
         public string Email { get; set; }
 

@@ -28,7 +28,7 @@ namespace Alpacko.Client.AdminConsole.Models
         public string City { get; set; }
 
         [Required]
-        [Email]
+        [EmailAddress(ErrorMessage = "Not a valid e-mail address")]
         [ToLower, Trim]
         public string Email { get; set; }
 

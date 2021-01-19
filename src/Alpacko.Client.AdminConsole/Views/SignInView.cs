@@ -31,15 +31,10 @@ namespace Alpacko.Client.AdminConsole.Views
 
                 Console.WriteLine("~~~~~~~~ Sign In ~~~~~~~");
                 SignInModel signInModel = Validate.GetValidInstance<SignInModel>();
-                //Console.Write("Email: ");
-                //string email = Input.GetText();
-                //Console.Write("Password: ");
-                //string password = Input.GetPasswordAsStar();
                 Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~");
 
                 Console.WriteLine("Signing in...");
 
-                //SignInModel signInModel = new SignInModel() { Email = email.Trim().ToLower(), Password = password };
                 signInResult = authService.SignIn(signInModel).GetAwaiter().GetResult();
                 errorMessage = signInResult.ErrorMessage;
                 Console.WriteLine();
