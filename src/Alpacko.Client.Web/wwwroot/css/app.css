@@ -64,6 +64,17 @@ body {
         background-color: #FF9932 !important;
     }
 
+.btn-orange {
+    border: #FF9932 1px solid !important;
+    border-radius: 4px !important;
+    color: white !important;
+    background-color: #FF9932 !important;
+}
+
+    .btn-orange:hover {
+        background-color: transparent !important;
+    }
+
 .border-3 {
     border-width: 3px !important;
 }
@@ -198,18 +209,6 @@ body {
     border: hidden;
     text-align: center;
     padding-top: 5px;
-    box-shadow: 10px 10px 8px rgba(0, 0, 0, 0.04);
-}
-
-.sign-in-btn {
-    width: 100%;
-    height: 50px;
-    background: #28A5CD;
-    color: white;
-    font-family: 'Segoe UI';
-    font-size: 20px;
-    border: hidden;
-    text-align: center;
     box-shadow: 10px 10px 8px rgba(0, 0, 0, 0.04);
 }
 

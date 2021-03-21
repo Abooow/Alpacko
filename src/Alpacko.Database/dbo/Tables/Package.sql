@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[Package]
 (
-	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
+	[Id] VARCHAR(10) NOT NULL PRIMARY KEY, 
     [SenderId] INT NOT NULL, 
     [RecipientId] INT NOT NULL, 
     [PackageDetailId] INT NOT NULL, 

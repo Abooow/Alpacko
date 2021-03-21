@@ -1,14 +1,17 @@
 ﻿@page "/registerpackage"
-@inject HttpClient Http
-@using Alpacko.Client.Web.Models;
+@using Alpacko.Client.Web.Models
+@using System.Text.Json
+@attribute [Authorize(Roles = "Admin")]
+@inject HttpClient HttpClient
 
-<MainNavbar></MainNavbar>
+<MainNavbar />
 <style id="applicationStylesheet" type="text/css">
-    .validationmessage{
-        position:absolute;
-        left:555px;
-        top:358px;
+    .validationmessage {
+        position: absolute;
+        left: 555px;
+        top: 358px;
     }
+
     .mediaViewInfo {
         --web-view-name: Web 1920 – 1;
         --web-view-id: Web_1920__1;
@@ -150,7 +153,7 @@
         top: 291px;
         font-family: Helvetica Neue;
         font-size: 25px;
-        padding-left:1rem;
+        padding-left: 1rem;
     }
 </style>
 
@@ -170,12 +173,27 @@
         <rect id="container3" rx="4" ry="4" x="0" y="0" width="780" height="60">
         </rect>
     </svg>
-    <EditForm Model="@packageModel" id="packageidForm">
+    <EditForm Model="@packageModel" id="packageidForm" OnValidSubmit="RegisterPackage" OnInvalidSubmit="() => showMessages = false">
         <DataAnnotationsValidator />
         <input type="text" id="packageid" name="fname" placeholder="Package ID" @bind-value="@packageModel.PackageID"><br><br>
-      <div class="validationmessage">
-        <ValidationMessage  For="@(() => packageModel.PackageID)" />
-      </div>
+        <div class="validationmessage">
+            <ValidationMessage For="@(() => packageModel.PackageID)" />
+            @if (showMessages)
+            {
+                @if (success)
+                {
+                    <div class="alert alert-success" role="alert">
+                        The package was successfully registered.
+                    </div>
+                }
+                else
+                {
+                    <div class="alert alert-danger" role="alert">
+                        @errorMessage
+                    </div>
+                }
+            }
+        </div>
     </EditForm>
     <div id="Enter_Package_ID">
         <span>Enter Package ID</span>
@@ -185,4 +203,18 @@
 
 @code {
     private RegisterPackageModel packageModel = new RegisterPackageModel();
+    private bool success;
+    private bool showMessages;
+    private string errorMessage = "";
+
+    private async Task RegisterPackage()
+    {
+        HttpResponseMessage response = await HttpClient.PostAsJsonAsync<RegisterPackageModel>("api/registerpackages", packageModel);
+
+        showMessages = true;
+        RegisteredPackageResult packageResult = JsonSerializer.Deserialize<RegisteredPackageResult>(await response.Content.ReadAsStringAsync(), new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+
+        success = packageResult.Successful;
+        errorMessage = packageResult.ErrorMessage;
+    }
 }

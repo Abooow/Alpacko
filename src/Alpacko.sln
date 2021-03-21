@@ -7,9 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alpacko.Client.Web", "Alpac
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alpacko.API", "Alpacko.API\Alpacko.API.csproj", "{0F86E744-35AE-4306-81D5-8413AB1F111D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alpaco.API.Library", "Alpaco.API.Library\Alpaco.API.Library.csproj", "{4333A8F9-D86B-4A10-8B01-475A4AE5E953}"
-EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Alpacko.Database", "Alpacko.Database\Alpacko.Database.sqlproj", "{53D83295-CCE7-450A-AC34-6E922A0B574E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alpacko.Client.AdminConsole", "Alpacko.Client.AdminConsole\Alpacko.Client.AdminConsole.csproj", "{9EA8DF46-8E43-4A22-B304-4DFEC0C185D0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,16 +25,16 @@ Global
 		{0F86E744-35AE-4306-81D5-8413AB1F111D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F86E744-35AE-4306-81D5-8413AB1F111D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F86E744-35AE-4306-81D5-8413AB1F111D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4333A8F9-D86B-4A10-8B01-475A4AE5E953}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4333A8F9-D86B-4A10-8B01-475A4AE5E953}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4333A8F9-D86B-4A10-8B01-475A4AE5E953}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4333A8F9-D86B-4A10-8B01-475A4AE5E953}.Release|Any CPU.Build.0 = Release|Any CPU
 		{53D83295-CCE7-450A-AC34-6E922A0B574E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{53D83295-CCE7-450A-AC34-6E922A0B574E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{53D83295-CCE7-450A-AC34-6E922A0B574E}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{53D83295-CCE7-450A-AC34-6E922A0B574E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{53D83295-CCE7-450A-AC34-6E922A0B574E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{53D83295-CCE7-450A-AC34-6E922A0B574E}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{9EA8DF46-8E43-4A22-B304-4DFEC0C185D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EA8DF46-8E43-4A22-B304-4DFEC0C185D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EA8DF46-8E43-4A22-B304-4DFEC0C185D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EA8DF46-8E43-4A22-B304-4DFEC0C185D0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,12 +1,16 @@
 ﻿@page "/signin"
 @using Alpacko.Client.Web.Models;
+@using System.Web
+@using Microsoft.AspNetCore.WebUtilities
+@inject IAuthService AuthService
+@inject NavigationManager NavigationManager
 
 <MainNavbar />
 <br />
 <br />
 <div class="form">
     <h2 class="title">Sign In</h2>
-    <EditForm Model="@signInModel">
+    <EditForm Model="@signInModel" OnValidSubmit="HandleSignIn">
         <DataAnnotationsValidator />
         <div class="form-group">
             <label class="label">E-mail</label>
@@ -22,22 +26,53 @@
             <div class="d-flex justify-content-between">
                 <div class="form-check">
                     <input type="checkbox" class="form-check-input" @bind-value="@signInModel.StaySignedIn">
-                    <label class="label">Stay logged in</label>
+                    <label class="label">Stay signed in</label>
                 </div>
                 <a href="/account/forgotpassword">Forgot password?</a>
             </div>
         </div>
         <div class="field" style="margin-bottom: 1em;">
             <div class="control">
-                <button type="submit" class="sign-in-btn rounded">Sign in</button>
+                <button type="submit" class="btn bg-blue text-white btn-block">Sign in</button>
             </div>
         </div>
+
+        @if (showErrors)
+        {
+            <div class="alert alert-danger">
+                @errorMessage
+            </div>
+        }
+
         <div class="text-center">
-            <p>Dont you have an account <a href="/signup">Sign up</a></p>
+            <p>Don't you have an account <a href="/signup">Sign up</a></p>
         </div>
     </EditForm>
 </div>
 
 @code {
     private SignInModel signInModel = new SignInModel();
+    private bool showErrors;
+    private string errorMessage = "";
+
+    private async Task HandleSignIn()
+    {
+        var result = await AuthService.SignIn(signInModel);
+
+        if (result.Successful)
+        {
+            showErrors = false;
+
+            Uri uri = NavigationManager.ToAbsoluteUri(HttpUtility.UrlDecode(NavigationManager.Uri));
+            if (QueryHelpers.ParseQuery(uri.Query).TryGetValue("returnUrl", out var returnUrl))
+                NavigationManager.NavigateTo(returnUrl);
+            else
+                NavigationManager.NavigateTo("/address");
+        }
+        else
+        {
+            showErrors = true;
+            errorMessage = result.ErrorMessage;
+        }
+    }
 }
